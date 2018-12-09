@@ -1,0 +1,3 @@
+MAKE EDIT BUTTON ONLY APPEAR FOR AUTHORS, LOOK AT LUCA'S CODE TO SEE HOW
+make show-replies button fetch replies with ajax
+reply edit only shows up for own replies
