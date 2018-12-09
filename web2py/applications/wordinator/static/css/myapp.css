@@ -25,6 +25,7 @@ a {
     text-decoration: none;
     /* background-color: #D1D0CE !important; */
     background-color: #CA226B !important;
+    cursor: pointer;
 }
 
 a:first-child {
@@ -70,5 +71,9 @@ ul {
 li {
   width: 100px;
   margin: 10px;
-  font-size: 18;                   
+  font-size: 18;
+}
+
+#submit {
+  cursor: pointer;
 }
