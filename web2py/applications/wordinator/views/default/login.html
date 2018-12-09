@@ -12,36 +12,54 @@
 </script> -->
 
 <div class="main_content">
-    <nav class="navigation_bar">
-        <div class="options">
-            <a href="/login">Login</a>
-            <a href="/about">About</a>
+    <head>
+         <script type="text/javascript">
+           function Redirect_about() {
+              window.location="http://127.0.0.1:8000/wordinator/default/about";
+           }
+           function Redirect_home() {
+              window.location="http://127.0.0.1:8000/wordinator/default/index";
+           }
+          </script>
+    </head>
+
+    <body>
+        <nav class="navigation_bar">
+            <div class="options">
+                <a onclick="Redirect_home();">Home</a>
+                <a>Login</a>
+                <a onclick="Redirect_about();">About</a>
+                <!-- <a>Home</a>
+                <a>Login</a>
+                <a>About</a> -->
+            </div>
+        </nav>
+
+
+        <div class="login-container">
+            <h2>Login</h2>
+            <form>
+                  <ul class="flex-outer">
+                    <li>
+                      <label for="name">Name</label>
+                      <input type="text" id="name" placeholder="Enter your name here">
+                    </li>
+                    <li>
+                      <label for="email">Email</label>
+                      <input type="email" id="email" placeholder="Enter your email here">
+                    </li>
+                    <li>
+                      <label for="phone">Phone</label>
+                      <input type="tel" id="phone" placeholder="Enter your phone here">
+                    </li>
+
+                    <li>
+                      <button type="submit">Submit</button>
+                    </li>
+                  </ul>
+            </form>
         </div>
-    </nav>
-
-    <div class="login-container">
-        <h2>Login</h2>
-        <form>
-              <ul class="flex-outer">
-                <li>
-                  <label for="name">Name</label>
-                  <input type="text" id="name" placeholder="Enter your name here">
-                </li>
-                <li>
-                  <label for="email">Email</label>
-                  <input type="email" id="email" placeholder="Enter your email here">
-                </li>
-                <li>
-                  <label for="phone">Phone</label>
-                  <input type="tel" id="phone" placeholder="Enter your phone here">
-                </li>
-
-                <li>
-                  <button type="submit">Submit</button>
-                </li>
-              </ul>
-        </form>
-    </div>
+    </body>
 </div>
   <!-- ################## Reload the page on comment add ###########################3 -->
 <!-- <script src="{{=URL('static', 'js/default_index.js')}}"></script> -->

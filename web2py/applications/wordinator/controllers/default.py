@@ -53,3 +53,9 @@ def call():
 
 def login():
     return dict()
+
+def about():
+    return dict()
+
+def home():
+    return dict()
