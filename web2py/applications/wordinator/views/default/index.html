@@ -1,136 +1,31 @@
 {{extend 'layout.html'}}
 
 {{block head}}
-<script src="{{=URL('static', 'js/vue.js')}}"></script>
-<script>
+{{end}}
+<!-- <script src="{{=URL('static', 'js/vue.js')}}"></script> -->
+<!-- <script>
     var add_post_url = "{{=URL('api', 'add_post', user_signature=True)}}";
     var get_post_list_url = "{{=URL('api', 'get_post_list')}}";
-    // Like callbacks.
-    var set_like_url = "{{=URL('api', 'set_like', user_signature=True)}}";
+    Like callbacks.
     var get_likers_url = "{{=URL('api', 'get_likers')}}"
-    // Stars.
-    var set_stars_url = "{{=URL('api', 'set_stars', user_signature=True)}}";
-    var is_logged_in = {{='false' if auth.user is None else 'true'}};
-
-    var set_thumb_url = "{{=URL('api', 'set_thumb', user_signature=True)}}";
-
-    var edit_post_url = "{{=URL('api', 'edit_post', user_signature=True)}}";
-
-    var add_reply_url = "{{=URL('api', 'add_reply', user_signature=True)}}";
-
-    var edit_reply_url = "{{=URL('api', 'edit_reply', user_signature=True)}}";
-
     var get_reply_url = "{{=URL('api', 'get_reply_list', user_signature=False)}}";
-</script>
-{{end}}
-
+</script> -->
+<head>
+     <script type="text/javascript">
+      function Redirect() {
+         window.location="http://127.0.0.1:8000/wordinator/default/login#";
+      }
+     </script>
+</head>
 <div class="main_content">
-  <div id="vue-div" class="display:none">
-
-  <div v-if="is_logged_in" class="add_post">
-    <button v-on:click="$('#form_display').show()">Add Post</button>
-  </div>
-
-  <div id="form_display" style="display: none">
-    <div id="add_post" style="display:none">
-      <div class="container form_row">
-        <div class="label quarter">
-          Title:
+    <nav class="navigation_bar">
+        <div class="options">
+            <!-- <router-link tag="li" to="/login">Login</router-link> -->
+            <!-- <router-link tag="li" to="/about">About</router-link> -->
+            <a onclick="Redirect();">Login</a>
+            <a>About</a>
         </div>
-        <div class="form threequarters">
-          <input v-model="form_title" placeholder="Enter the post title"/>
-        </div>
-      </div>
-      <div class="container form_row">
-        <div class="label quarter">
-          Content:
-        </div>
-        <div class="form threequarters">
-          <textarea v-model="form_content" placeholder="Enter the content of your post"></textarea>
-        </div>
-      </div>
-      <div class="container form_row"><div class="quarter"></div>
-        <div class="threequarters">
-          <div class="submit">
-            <button id="add-post" v-on:click="add_post">Submit</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- Message in case there are no posts. -->
-  <div v-if="post_list.length === 0">There are no posts.</div>
-
-  <!-- ################## Reload the page on comment add ###########################3 -->
-
-  <!-- We display the posts. -->
-  <div id="post_list">
-    <div class="post_div" v-for="post in post_list">
-      <div class="post_title">${post.post_title}</div>
-      <div class="post_content">
-        <div v-if="post.editing">
-          <textarea id="post_edit_box" v-model="post.post_content">
-          </textarea>
-          <button v-on:click="edit_post(post._idx, $('#post_edit_box').val())">Submit</button>
-        </div>
-        <div v-if="!post.editing">
-          ${post.post_content}
-        </div>
-      </div>
-      <div class="attributes">
-        <div v-if="is_logged_in" class="thumb_rating">
-          <span v-on:mouseout="thumbs_mouseout(post._idx, 'u')">
-            <span v-on:mouseover="thumbs_mouseover(post._idx, 'u')"
-                  v-on:click="thumbs_click(post._idx, 'u')">
-                <i class="fa fa-thumbs-o-up" v-if="!post.thumbsup && !(post.thumb == 'u')"></i>
-                <i class="fa fa-thumbs-up" v-if="post.thumbsup || post.thumb == 'u'"> </i>
-            </span>
-          </span>
-          <span v-on:mouseout="thumbs_mouseout(post._idx, 'd')">
-            <span v-on:mouseover="thumbs_mouseover(post._idx, 'd')"
-                  v-on:click="thumbs_click(post._idx, 'd')">
-                <i class="fa fa-thumbs-o-down" v-if="!post.thumbsdown && !(post.thumb == 'd')"></i>
-                <i class="fa fa-thumbs-down" v-if="post.thumbsdown || post.thumb == 'd'"> </i>
-            </span>
-          </span>
-            <span>
-                <span v-if="post.thumb == 'd'">${(post.thumb_difference || 0) - 1}</span>
-                <span v-if="post.thumb == 'u'">${(post.thumb_difference || 0) + 1}</span>
-                <span v-if="post.thumb == null">${post.thumb_difference || 0}</span>
-            </span>
-        </div>
-        <span v-if="!(is_logged_in)">
-            <span v-if="post.thumb == null">${post.thumb_difference || 0}</span>
-        </span>
-      </div>
-      <button v-if="is_logged_in && post.post_author == post.useremail" v-on:click="toggle_edit_post(post._idx)">
-        Edit
-      </button>
-      <button v-if="!post.show_replies" v-on:click="toggle_show_replies(post._idx)">Reply/Show Replies</button>
-      <button v-if="post.show_replies" v-on:click="toggle_show_replies(post._idx)">Hide Replies</button>
-      <button v-if="post.show_replies && is_logged_in" v-on:click="toggle_add_reply(post._idx)">Add Reply</button>
-      <div v-if="post.adding_reply && post.show_replies">
-        <textarea id="reply_add_box">
-        </textarea>
-        <button v-on:click="add_reply(post._idx, $('#reply_add_box').val())">Submit</button>
-      </div>
-      <div v-if="post.show_replies" class="replies">
-        <div v-for="reply in post.replies">
-          <div style="border: solid black 1px; margin: 5px; padding: 5px;">
-            ${reply.author}
-            ${reply.post_time}
-            <div v-if="reply.editing">
-              <textarea id="reply_edit_box" v-model="reply.reply_content">
-              </textarea>
-              <button v-on:click="edit_reply(post._idx, reply.id, $('#reply_edit_box').val())">Submit</button>
-            </div>
-            <div v-if="!reply.editing">${reply.reply_content}</div>
-            <button v-if="post.useremail == reply.author" v-on:click="toggle_edit_reply(post._idx, reply.id)">Edit</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+    </nav>
 </div>
-
-<script src="{{=URL('static', 'js/default_index.js')}}"></script>
+  <!-- ################## Reload the page on comment add ###########################3 -->
+<!-- <script src="{{=URL('static', 'js/default_index.js')}}"></script> -->

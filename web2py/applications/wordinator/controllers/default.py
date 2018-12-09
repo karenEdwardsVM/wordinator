@@ -51,4 +51,5 @@ def call():
     """
     return service()
 
-
+def login():
+    return dict()

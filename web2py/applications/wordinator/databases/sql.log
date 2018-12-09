@@ -102,3 +102,37 @@ CREATE TABLE "reply"(
     "post_id" CHAR(512)
 );
 success!
+timestamp: 2018-12-08T21:45:46.886302
+CREATE TABLE "web2py_session_wordinator"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "locked" CHAR(1),
+    "client_ip" CHAR(64),
+    "created_datetime" TIMESTAMP,
+    "modified_datetime" TIMESTAMP,
+    "unique_key" CHAR(64),
+    "session_data" BLOB
+);
+success!
+timestamp: 2018-12-08T22:56:29.234737
+CREATE TABLE "users"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "email" CHAR(512),
+    "name" TEXT
+);
+success!
+timestamp: 2018-12-08T22:56:29.238233
+CREATE TABLE "words"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "list_id" CHAR(512),
+    "word" CHAR(512),
+    "definition" TEXT,
+    "seen" TEXT,
+    "correct" CHAR(512)
+);
+success!
+timestamp: 2018-12-08T22:56:29.242183
+CREATE TABLE "lists"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "name" TEXT
+);
+success!

@@ -1,33 +1,74 @@
-/* line 1, ../sass/_main.scss */
-.colorful {
-  color: #bb8833;
-}
 
 /* line 5, ../sass/_main.scss */
-div.main_content {
-  padding: 16px;
+html {
+    font-family: monospace;
+    background-color: #BCC6CC;
 }
-/* line 8, ../sass/_main.scss */
-div.main_content div.form_row {
-  margin-top: 8px;
-  margin-bottom: 8px;
+
+nav.navigation_bar {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    border-radius: 3px;
+    background-color: #CA226B;
 }
-/* line 13, ../sass/_main.scss */
-div.main_content div.post_div {
-  margin: 4px;
-  border: 1px black solid;
-  background-color: #eeeeee;
-  padding: 4px;
+
+div.options {
+    display: flex;
 }
-/* line 18, ../sass/_main.scss */
-div.main_content div.post_div .post_title {
-  font-size: 120%;
+
+a {
+    /* background-color: black !important; */
+    color: white !important;
+    padding: 10px;
+    border-radius: 2px;
+    text-decoration: none;
+    /* background-color: #D1D0CE !important; */
+    background-color: #CA226B !important;
 }
-/* line 22, ../sass/_main.scss */
-div.main_content i.changed {
-  color: #777777;
+
+a:first-child {
+    margin-right: 5px;
 }
-/* line 25, ../sass/_main.scss */
-div.main_content span.likers_list {
-  color: #7777cc;
+
+/* Styling for the form*/
+div.login-container {
+    display: flex;
+    flex-direction: column;
+}
+
+ul {
+    list-style-type: none;
+}
+
+.flex-outer li,
+{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.flex-outer > li > label,
+.flex-outer li p {
+  flex: 1 0 120px;
+  max-width: 220px;
+}
+
+.flex-outer > li > label + *,
+
+.flex-outer li button {
+  margin-left: auto;
+  padding: 8px 16px;
+  border: none;
+  background: #333;
+  color: #f2f2f2;
+  text-transform: uppercase;
+  letter-spacing: .09em;
+  border-radius: 2px;
+}
+
+li {
+  width: 100px;
+  margin: 10px;
+  font-size: 18px;
 }

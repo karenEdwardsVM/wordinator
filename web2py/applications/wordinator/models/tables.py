@@ -22,26 +22,24 @@ def get_user_email():
 def get_current_time():
     return datetime.datetime.utcnow()
 
+# users table
 db.define_table(
-    'post',
-    Field('post_author', default=get_user_email()),
-    Field('post_title'),
-    Field('post_content', 'text'),
-    Field('post_time', 'datetime', default=get_current_time()),
+    'users',
+    Field('email', default=get_user_email()),
+    Field('name', 'text'),
+)
+
+# words table
+db.define_table(
+    'words',
+    Field('list_id'),
+    Field('word'),
+    Field('definition', 'text'),
+    Field('seen', 'text'),
+    Field('correct'),
 )
 
 db.define_table(
-    'reply',
-    Field('author', default=get_user_email()),
-    Field('title'),
-    Field('reply_content', 'text'),
-    Field('post_time', 'datetime', default=get_current_time()),
-    Field('post_id'),
-)
-
-# Thumbs
-db.define_table('thumb',
-    Field('user_email'), # The user who thumbed, easier to just write the email here.
-    Field('post_id', 'reference post'), # The thumbed post
-    Field('thumb_state'), # This can be 'u' for up or 'd' for down, or None for... None.
+    'lists',
+    Field('name', 'text'),
 )
