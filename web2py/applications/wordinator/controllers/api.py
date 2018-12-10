@@ -46,7 +46,8 @@ def add_list():
             correct = 0,
             ts = 0,
         )
-    return response.json(dict(list_id = list_id, inserted = len(content.split("|"))))
+
+    return json.dumps(dict(list_id = list_id, inserted = len(content.split("|"))))
 
 #@auth.requires_signature()
 def get_word():
