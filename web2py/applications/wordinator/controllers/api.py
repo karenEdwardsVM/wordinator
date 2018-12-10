@@ -65,11 +65,15 @@ def get_word():
             ts = int(time.time()),
             seen = int(word.seen) + 1,
         )
-
+    print("Got word ", word)
     return json.dumps(word)
 
 def get_words():
     count = int(request.vars.count)
-    return json.dumps([json.loads(get_word()) for i in range(0, count)])
+    print("count = ", count)
+    a = json.dumps([json.loads(get_word()) for i in range(0, count)])
+    print("a = ", a)
+    return a
+    # return json.dumps([json.loads(get_word()) for i in range(0, count)])
 
 #def get_high_scores

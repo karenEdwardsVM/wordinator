@@ -86,10 +86,10 @@ aS'78c184e2-3080-4723-a11b-b9b9a91b84f2'
 p42
 asS'check_version'
 p43
-I00
+I01
 sS'hmac_key'
 p44
-S'284bcfed-289c-4de9-b385-1ebb4669bf90'
+S'b48601f1-fe6c-4d3c-8bb3-d14cc9acf8f8'
 p45
 sS'token'
 p46
@@ -126,5 +126,5 @@ aS'5ce228f4-2d0c-42c6-b4d4-d9f876c11401'
 p61
 asS'last_time'
 p62
-F1544425056.7903709
+F1544476815.1407681
 s.
