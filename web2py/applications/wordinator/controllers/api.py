@@ -52,7 +52,7 @@ def get_word():
     print("Running get_word")
     update_seen = int(request.vars.update_seen or 0)
     list_id = int(request.vars.list_id or 0)
-    
+
     print("Seen is: ", update_seen)
 
     word = db(db.words.seen < 6 & list_id == db.words.list_id).select(
@@ -72,8 +72,9 @@ def get_word():
     return response.json(word)
 
 def get_words():
+    print("Running")
     count = int(request.vars.count or 0)
+    print("Count = ", count)
     return [get_word() for i in range(0, count)]
 
 #def get_high_scores
-    
