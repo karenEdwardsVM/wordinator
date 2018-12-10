@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 password="pbkdf2(1000,20,sha512)$8e0a802309fe2fd3$80f6773bf878cab8645ec9b317af114876948b76"
+=======
+password="pbkdf2(1000,20,sha512)$a0680b2dd58556d7$e3d7e437a49e990513019432e350bc9f009dbba4"
+>>>>>>> 9a4ec754bcb65abead1fab7ea8f73524ac6db098
