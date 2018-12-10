@@ -9,54 +9,41 @@
     var get_word_url = "{{=URL('api', 'get_word')}}";
     var submit_url = "{{=URL('api', 'submit_word')}}";
 
-     /**
-     * Shuffles array in place. ES6 version
-     * @param {Array} a items An array containing the items.
-     */
     function shuffle(a) {
-        for (let i = a.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1));
-            [a[i], a[j]] = [a[j], a[i]];
+        var j, x, i;
+        for (i = a.length - 1; i > 0; i--) {
+            j = Math.floor(Math.random() * (i + 1));
+            x = a[i];
+            a[i] = a[j];
+            a[j] = x;
         }
         return a;
     }
 
     const run_get_words = () => {
-        let word_array = [];
-        $.get(get_word_url, {list_id:4}, (result) => {
+        $.get(get_words_url, {count:6, list_id: 4}, (result) => {
+            result = JSON.parse(result);
+            let word_array = []
+            //console.log("WA", word_array)
+            //console.log("WA", word_array)
+  
             $("#quiz_word").html(result[0].word);
-            word_array.push(result[0].definition);
-            // console.log(result[0].word);
+
+            for(let i = 0; i < result.length; i++) {
+                word_array.push(result[i].definition)
+            }
+
+            console.log("word_array ", word_array);
+
+            //word_array = shuffle(word_array);
+
+            console.log("after shuffle: ", word_array);
+
+            for(let i = 0; i < word_array.length; i++) {
+                $(`#word${i}`).html(word_array[i]);
+            }
         });
-        console.log("word_array" ,word_array);
-
-        for(let i = 1; i < 5; i++)
-        {
-            $.get(get_word_url, {list_id:4}, (result) => {
-                // console.log("Getting result");
-                // word_array[i] = $(`#word${i}`).html(result[0].definition);
-                word_array.push(result[0].definition);
-            });
-        }
-        console.log("word_array ", word_array);
-        shuffle(word_array);
-        console.log("after shuffle: ", word_array);
-        // console.log("word_array ", word_array);
-        // console.log("word_array[1] ", word_array[1]);
-        for(let i = 0; i < word_array.length; i++) {
-            $(`#word${i}`).html(word_array[i]);
-        }
-
-        // $.get(get_words_url, {count:6}, (result) => {
-        //     console.log("result ", result[0].word);
-        //     $("#word2").html(result[0].word);
-        //     // $("#word1").value = result[1][0];
-        //     // $("#word3").value = result[2][0];
-        //     // $("#word4").value = result[3][0];
-        //     // $("#word5").value = result[4][0];
-        //     // $("#quiz_word").value = result[5][0];
-        // });
-    }
+    };
 
     $(document).ready(() => {
         console.log("ready!");
