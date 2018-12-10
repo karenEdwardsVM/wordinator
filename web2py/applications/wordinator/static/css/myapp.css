@@ -32,6 +32,16 @@ a:first-child {
     margin-right: 5px;
 }
 
+/*Styling for the quiz-box*/
+div.quiz-box {
+    display: flex;
+    justify-content: center;
+    border-radius: 2px;
+    border-color: #CA226B;
+    border-radius: 2px;
+    border-style: solid;
+}
+
 /* Styling for the form*/
 div.login-container {
     display: flex;

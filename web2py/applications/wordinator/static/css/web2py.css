@@ -1,5 +1,13 @@
-header a {color: white; font-size:1.1em}
-main {min-height: 70vh}
+header a {
+    color: white;
+    font-size:1.1em;
+}
+
+main {
+    min-height: 100%;
+    background-color: #BCC6CC;
+}
+
 table {color: black}
 .form-group {padding-bottom: 10px !important;}
 .w2p_hidden {display:none;visibility:visible}
@@ -26,7 +34,7 @@ div.w2p_flash {
     font-weight:bold;
     display:none;
     padding:20px 20px 20px 50px;
-    width:100%;    
+    width:100%;
     opacity:0.95;
     vertical-align:middle;
     cursor:pointer;
@@ -72,6 +80,7 @@ div.error {
 }
 
 #navbar {float:right; padding:5px; /* same as superfish */}
+
 
 .statusbar {
     background-color:#F5F5F5;

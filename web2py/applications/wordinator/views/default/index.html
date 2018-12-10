@@ -12,27 +12,34 @@
 </script> -->
 <div class="main_content">
     <head>
-         <script type="text/javascript">
-          function Redirect_login() {
-             window.location="http://127.0.0.1:8000/wordinator/default/login";
-          }
-          function Redirect_about() {
-             window.location="http://127.0.0.1:8000/wordinator/default/about";
-          }
-          function Redirect_home() {
-             window.location="http://127.0.0.1:8000/wordinator/default/index";
-          }
-         </script>
     </head>
 
     <body>
-        <!-- <nav class="navigation_bar">
-            <div class="options">
-                <a onclick="Redirect_home();">Home</a>
-                <a onclick="Redirect_login();">Login</a>
-                <a onclick="Redirect_about();">About</a>
-            </div>
-        </nav> -->
+        <div class="quiz-box">
+            <form>
+                <ul class="flex-outer">
+                    <li>
+                        <label for="word">Word: </label>
+                    </li>
+                    <!-- pull definitions -->
+                    <li>
+                        <label for="definition">Def 1: </label>
+                    </li>
+                    <li>
+                        <label for="definition">Def 2: </label>
+                    </li>
+                    <li>
+                        <label for="definition">Def 3: </label>
+                    </li>
+                    <li>
+                        <label for="definition">Def 4: </label>
+                    </li>
+                    <li>
+                        <button id="submit" type="submit">Submit</button>
+                    </li>
+                </ul>
+            </form>
+        </div>
     </body>
 </div>
   <!-- ################## Reload the page on comment add ###########################3 -->
