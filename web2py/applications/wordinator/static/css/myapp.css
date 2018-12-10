@@ -5,6 +5,11 @@ html {
     background-color: #BCC6CC !important;
 }
 
+main {
+    background-color: #D1D0CE !important;
+    color: black;
+}
+
 nav.navigation_bar {
     display: flex;
     flex-direction: row;
@@ -33,23 +38,36 @@ a:first-child {
 }
 
 /*Styling for the quiz-box*/
+div.quiz-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    padding-top: 20px;
+    flex-direction: row;
+}
+
 div.quiz-box {
     display: flex;
     justify-content: center;
     border-radius: 2px;
-    border-color: #CA226B;
-    border-radius: 2px;
-    border-style: solid;
+    border: 3px solid grey;
+    border-radius: 5px;
+    padding: 20px;
+    padding-top: 1px;
+}
+
+ul.flex-outer {
+    list-style-type: none;
+    border-radius: 5px;
+    background-color: #CA226B;
+    padding: 10px;
 }
 
 /* Styling for the form*/
 div.login-container {
     display: flex;
     flex-direction: column;
-}
-
-ul {
-    list-style-type: none;
 }
 
 .flex-outer li,
