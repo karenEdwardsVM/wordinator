@@ -2,4 +2,4 @@
 *.pyc
 *errors*
 gluon/*
-
+admin/sessions/

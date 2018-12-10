@@ -23,6 +23,9 @@
 #    return db(db.reply.post_id == post_id).select(db.reply.ALL, orderby=~db.reply.post_time)
 
 #@auth.requires_signature()
+
+import time
+
 def add_list():
     list_name = request.vars.list_name
     content = request.vars.content
@@ -48,21 +51,22 @@ def add_list():
 def get_word():
     print("Running get_word")
     update_seen = bool(request.vars.update_seen)
+    list_id = int(request.vars.list_id)
     
     print("Seen is: ", update_seen)
 
-    word = db(db.words.seen < 6).select(
+    word = db(db.words.seen < 6 & list_id == db.words.list_id).select(
         db.words.ALL,
         orderby = '<random>',
         limitby = (0,1),
     )
 
-    print("Got", word)
+    print("Got", word, word[0])
 
-    #if update_seen:
-        #db(db.words.id == word.id).update(
-        #    ts = int(time.time()),
-        #    seen = word.seen + 1,
-        #)
+    if update_seen:
+        db(db.words.id == word[0]["id"]).update(
+            ts = int(time.time()),
+            seen = int(word[0].seen) + 1,
+        )
 
     return response.json(word)
