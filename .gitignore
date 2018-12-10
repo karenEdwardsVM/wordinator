@@ -7,3 +7,4 @@ admin/sessions/
 *.log
 *.sqlite
 *parameters*
+databases
