@@ -7,7 +7,8 @@
 <script>
     var get_words_url = "{{=URL('api', 'get_words')}}";
     var get_word_url = "{{=URL('api', 'get_word')}}";
-    var submit_url = "{{=URL('api', 'submit_word')}}";
+    var first_word = "";
+    var word_array = [];
 
     function shuffle(a) {
         var j, x, i;
@@ -21,26 +22,26 @@
     }
 
     const run_get_words = () => {
-        $.get(get_words_url, {count: 6, list_id: 7}, (result) => {
+        $.get(get_words_url, {count:6, list_id:4}, (result) => {
             result = JSON.parse(result);
-            let word_array = []
 
-            console.log("WA", word_array)
-  
+            first_word = result[0].definition;
             $("#quiz_word").html(result[0].word);
 
             for(let i = 0; i < result.length; i++) {
                 word_array.push(result[i].definition)
             }
-
-            console.log("word_array ", word_array);
-
-            //word_array = shuffle(word_array);
-
-            console.log("after shuffle: ", word_array);
+            word_array = shuffle(word_array);
 
             for(let i = 0; i < word_array.length; i++) {
-                $(`#word${i}`).html(word_array[i]);
+                let element = (
+                    `<li>
+                        <button onclick="submit_answer(${i});">
+                            ${word_array[i]}
+                        </button>
+                    </li>`
+                );
+                $(`#word-box`).append(element);
             }
         });
     };
@@ -51,12 +52,13 @@
     });
 
     const submit_answer = (n) => {
-        var word = $("#quiz_word").text();
-        console.log("Word is: ", word);
-
-        // $.get(submit_url, {}, (result) => {
-            // console.log(result[0]);
-        // });
+        console.log("Word is: ", first_word);
+        console.log("Answer is: ", word_array[n]);
+        if(word_array[n] == first_word) {
+            console.log("Correct");
+        } else {
+            console.log("Incorrect");
+        }
     }
 
 </script>
@@ -71,26 +73,8 @@
             <div class="quiz-box">
                 <form>
                     <h4 id="quiz_word">Word:</h4>
-                    <ul class="flex-outer">
+                    <ul class="flex-outer" id="word-box">
                         <!-- pull definitions -->
-                        <li>
-                            <button id="word1" onclick="submit_answer(1)"></button>
-                        </li>
-                        <li>
-                            <button id="word2" onclick="submit_answer(2)"></button>
-                        </li>
-                        <li>
-                            <button id="word3" onclick="submit_answer(3)"></button>
-                        </li>
-                        <li>
-                            <button id="word4" onclick="submit_answer(4)"></button>
-                        </li>
-                        <li>
-                            <button id="word5" onclick="submit_answer(5)"></button>
-                        </li>
-                        <!-- <li>
-                            <button id="submit" type="submit" onclick="submit_answer();">Submit</button>
-                        </li> -->
                     </ul>
                 </form>
             </div>

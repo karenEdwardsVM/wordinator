@@ -72,11 +72,11 @@ def get_word():
 
 #@auth.requires_signature()
 def get_words():
-    count = int(request.vars.count)
-    print("count = ", count)
-    a = json.dumps([json.loads(get_word()) for i in range(0, count)])
-    print("a = ", a)
-    return a
+    # count = int(request.vars.count)
+    # print("count = ", count)
+    # a = json.dumps([json.loads(get_word()) for i in range(0, count)])
+    # print("a = ", a)
+    # return a
     # return json.dumps([json.loads(get_word()) for i in range(0, count)])
     count = int(request.vars.count or 0)
     return json.dumps([json.loads(get_word()) for i in range(0, count)])
