@@ -7,4 +7,5 @@ admin/sessions/
 *.log
 *.sqlite
 *parameters*
+*.pid
 databases
