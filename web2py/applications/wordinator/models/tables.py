@@ -44,3 +44,11 @@ db.define_table(
     'lists',
     Field('name', 'text'),
 )
+
+db.define_table(
+    'scores',
+    Field('list_id'),
+    Field('user_email'),
+    Field('time_taken'),
+    Field('amount_correct'),
+)

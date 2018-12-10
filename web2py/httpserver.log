@@ -7365,7 +7365,26 @@
 127.0.0.1, 2018-12-09 21:06:34, GET, /favicon.ico, HTTP/1.1, 400, 0.000675
 =======
 >>>>>>> 81d8eef62c79cfeb744b5239e5f73b1cd370118b
+<<<<<<< HEAD
+127.0.0.1, 2018-12-09 22:17:22, GET, /wordinator/api/add_list, HTTP/1.1, 500, 2.238552
+127.0.0.1, 2018-12-09 22:17:22, GET, /wordinator/api/get_words, HTTP/1.1, 500, 0.112721
+127.0.0.1, 2018-12-09 22:19:14, GET, /wordinator/api/add_list, HTTP/1.1, 500, 0.112569
+127.0.0.1, 2018-12-09 22:19:14, GET, /wordinator/api/get_words, HTTP/1.1, 500, 0.109939
+127.0.0.1, 2018-12-09 22:25:12, GET, /wordinator/api/add_list, HTTP/1.1, 200, 0.328402
+127.0.0.1, 2018-12-09 22:25:13, GET, /wordinator/api/get_words, HTTP/1.1, 500, 0.145059
+127.0.0.1, 2018-12-09 22:26:23, GET, /admin/default/ticket/wordinator/127.0.0.1.2018-12-09.22-25-12.3630fce2-d90f-48d4-80c4-b7acd5c8b7fb, HTTP/1.1, 303, 0.283665
+127.0.0.1, 2018-12-09 22:26:23, GET, /admin/default/index, HTTP/1.1, 200, 0.081911
+127.0.0.1, 2018-12-09 22:26:26, POST, /admin/default/index, HTTP/1.1, 303, 0.024974
+127.0.0.1, 2018-12-09 22:26:26, GET, /admin/default/ticket/wordinator/127.0.0.1.2018-12-09.22-25-12.3630fce2-d90f-48d4-80c4-b7acd5c8b7fb, HTTP/1.1, 200, 0.091875
+127.0.0.1, 2018-12-09 22:27:19, GET, /wordinator/api/add_list, HTTP/1.1, 200, 0.407761
+127.0.0.1, 2018-12-09 22:27:19, GET, /wordinator/api/get_words, HTTP/1.1, 200, 0.097161
+127.0.0.1, 2018-12-09 22:27:24, GET, /wordinator/api/add_list, HTTP/1.1, 200, 0.074587
+127.0.0.1, 2018-12-09 22:27:24, GET, /wordinator/api/get_words, HTTP/1.1, 200, 0.089715
+127.0.0.1, 2018-12-09 22:28:00, GET, /wordinator/api/add_list, HTTP/1.1, 200, 2.032106
+127.0.0.1, 2018-12-09 22:28:00, GET, /wordinator/api/get_words, HTTP/1.1, 200, 0.089234
+=======
 >>>>>>> ef3e47bcee14aaf15d1e486706b72868f9b36901
+<<<<<<< HEAD
 127.0.0.1, 2018-12-09 22:38:41, GET, /wordinator/default/index, HTTP/1.1, 200, 0.070296
 127.0.0.1, 2018-12-09 22:38:41, GET, /wordinator/static/font-awesome-4.6.3/css/font-awesome.min.css, HTTP/1.1, 200, 0.002142
 127.0.0.1, 2018-12-09 22:38:41, GET, /wordinator/static/css/web2py.css, HTTP/1.1, 200, 0.001912
@@ -7396,3 +7415,6 @@
 127.0.0.1, 2018-12-09 22:39:38, GET, /wordinator/static/font-awesome-4.6.3/fonts/fontawesome-webfont.woff2, HTTP/1.1, 200, 0.000374
 127.0.0.1, 2018-12-09 22:39:39, GET, /favicon.ico, HTTP/1.1, 400, 0.000318
 127.0.0.1, 2018-12-09 22:39:39, GET, /favicon.ico, HTTP/1.1, 400, 0.000239
+=======
+>>>>>>> f441ad6d4943549f8c3c3b82f06dcbc5a24a28c0
+>>>>>>> ef7c714c98cec11c38bfb04fff5453ac581bf9af

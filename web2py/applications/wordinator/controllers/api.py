@@ -50,8 +50,8 @@ def add_list():
 #@auth.requires_signature()
 def get_word():
     print("Running get_word")
-    update_seen = bool(request.vars.update_seen)
-    list_id = int(request.vars.list_id)
+    update_seen = int(request.vars.update_seen or 0)
+    list_id = int(request.vars.list_id or 0)
     
     print("Seen is: ", update_seen)
 
@@ -63,10 +63,17 @@ def get_word():
 
     print("Got", word, word[0])
 
-    if update_seen:
+    if update_seen == 1:
         db(db.words.id == word[0]["id"]).update(
             ts = int(time.time()),
             seen = int(word[0].seen) + 1,
         )
 
     return response.json(word)
+
+def get_words():
+    count = int(request.vars.count or 0)
+    return [get_word() for i in range(0, count)]
+
+#def get_high_scores
+    

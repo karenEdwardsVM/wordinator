@@ -139,3 +139,12 @@ success!
 timestamp: 2018-12-09T17:57:43.818267
 ALTER TABLE "words" ADD "ts" CHAR(512);
 success!
+timestamp: 2018-12-09T22:17:22.181607
+CREATE TABLE "scores"(
+    "id" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "list_id" CHAR(512),
+    "user_email" CHAR(512),
+    "time_taken" CHAR(512),
+    "amount_correct" CHAR(512)
+);
+success!
