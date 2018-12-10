@@ -24,9 +24,14 @@
         $.get(get_words_url, {count:6, list_id: 1}, (result) => {
             result = JSON.parse(result);
             let word_array = []
+<<<<<<< HEAD
             //console.log("WA", word_array)
             //console.log("WA", word_array)
 
+=======
+            console.log("WA", word_array)
+  
+>>>>>>> 4ee85754218ae24ea5a2a0d25547baf0cf4b115f
             $("#quiz_word").html(result[0].word);
 
             for(let i = 0; i < result.length; i++) {

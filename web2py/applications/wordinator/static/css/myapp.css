@@ -122,3 +122,7 @@ li {
 #submit {
   cursor: pointer;
 }
+
+.list-name-input {
+  color: black;
+}
