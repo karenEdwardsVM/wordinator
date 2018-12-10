@@ -3,4 +3,5 @@
 *errors*
 gluon/*
 .log
-
+admin/sessions/
+*.log
