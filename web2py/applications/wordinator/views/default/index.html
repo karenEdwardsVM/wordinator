@@ -5,6 +5,8 @@
 <!-- <script src="{{=URL('static', 'js/vue.js')}}"></script> -->
 <head>
 <script>
+    let match = window.location.href.match(/list_id=([0123456789]*)/);
+    var user_list_id = (match && Number(match[1])) || 0;
     var get_words_url = "{{=URL('api', 'get_words')}}";
     var get_word_url = "{{=URL('api', 'get_word')}}";
     var submit_url = "{{=URL('api', 'submit_word')}}";
@@ -21,7 +23,7 @@
     }
 
     const run_get_words = () => {
-        $.get(get_words_url, {count: 6, list_id: 2}, (result) => {
+        $.get(get_words_url, {count: 6, list_id: user_list_id}, (result) => {
             result = JSON.parse(result);
             let word_array = []
 
@@ -40,14 +42,16 @@
             console.log("after shuffle: ", word_array);
 
             for(let i = 0; i < word_array.length; i++) {
-                $(`#word${i}`).html(word_array[i]);
             }
         });
     };
 
     $(document).ready(() => {
-        console.log("ready!");
-        run_get_words();
+        if (user_list_id) {
+          run_get_words();
+        } else {
+          alert("No list found, please specify one in the url.");
+        }
     });
 
     const submit_answer = (n) => {
@@ -71,7 +75,7 @@
             <div class="quiz-box">
                 <form>
                     <h4 id="quiz_word">Word:</h4>
-                    <ul class="flex-outer">
+                    <ul class="flex-outer" id="word_box">
                         <!-- pull definitions -->
                         <li>
                             <button id="word1" onclick="submit_answer(1)"></button>
