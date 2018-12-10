@@ -6569,3 +6569,19 @@
 =======
 >>>>>>> c9b41d6f12b2141a413f7fdac989ed9f5403bc09
 >>>>>>> 81d8eef62c79cfeb744b5239e5f73b1cd370118b
+127.0.0.1, 2018-12-09 22:17:22, GET, /wordinator/api/add_list, HTTP/1.1, 500, 2.238552
+127.0.0.1, 2018-12-09 22:17:22, GET, /wordinator/api/get_words, HTTP/1.1, 500, 0.112721
+127.0.0.1, 2018-12-09 22:19:14, GET, /wordinator/api/add_list, HTTP/1.1, 500, 0.112569
+127.0.0.1, 2018-12-09 22:19:14, GET, /wordinator/api/get_words, HTTP/1.1, 500, 0.109939
+127.0.0.1, 2018-12-09 22:25:12, GET, /wordinator/api/add_list, HTTP/1.1, 200, 0.328402
+127.0.0.1, 2018-12-09 22:25:13, GET, /wordinator/api/get_words, HTTP/1.1, 500, 0.145059
+127.0.0.1, 2018-12-09 22:26:23, GET, /admin/default/ticket/wordinator/127.0.0.1.2018-12-09.22-25-12.3630fce2-d90f-48d4-80c4-b7acd5c8b7fb, HTTP/1.1, 303, 0.283665
+127.0.0.1, 2018-12-09 22:26:23, GET, /admin/default/index, HTTP/1.1, 200, 0.081911
+127.0.0.1, 2018-12-09 22:26:26, POST, /admin/default/index, HTTP/1.1, 303, 0.024974
+127.0.0.1, 2018-12-09 22:26:26, GET, /admin/default/ticket/wordinator/127.0.0.1.2018-12-09.22-25-12.3630fce2-d90f-48d4-80c4-b7acd5c8b7fb, HTTP/1.1, 200, 0.091875
+127.0.0.1, 2018-12-09 22:27:19, GET, /wordinator/api/add_list, HTTP/1.1, 200, 0.407761
+127.0.0.1, 2018-12-09 22:27:19, GET, /wordinator/api/get_words, HTTP/1.1, 200, 0.097161
+127.0.0.1, 2018-12-09 22:27:24, GET, /wordinator/api/add_list, HTTP/1.1, 200, 0.074587
+127.0.0.1, 2018-12-09 22:27:24, GET, /wordinator/api/get_words, HTTP/1.1, 200, 0.089715
+127.0.0.1, 2018-12-09 22:28:00, GET, /wordinator/api/add_list, HTTP/1.1, 200, 2.032106
+127.0.0.1, 2018-12-09 22:28:00, GET, /wordinator/api/get_words, HTTP/1.1, 200, 0.089234
