@@ -5,6 +5,7 @@ gluon/*
 .log
 applications/admin/sessions
 applications/admin/sessions/*
+applications/admin/sessions/*/*
 *.log
 *.sqlite
 *parameters*
