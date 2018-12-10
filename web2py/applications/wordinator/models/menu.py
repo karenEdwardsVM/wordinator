@@ -49,6 +49,7 @@ def _():
     # useful links to internal and external resources
     # ------------------------------------------------------------------------------------------------------------------
     response.menu += [
+        (T('Add List'), False, URL('default', 'list')),
         (T('About'), False, URL('default', 'about')),
     ]
 

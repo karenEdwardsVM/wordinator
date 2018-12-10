@@ -2,5 +2,8 @@
 *.pyc
 *errors*
 gluon/*
+.log
 admin/sessions/
 *.log
+*.sqlite
+*parameters*

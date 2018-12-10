@@ -59,3 +59,6 @@ def about():
 
 def home():
     return dict()
+
+def list():
+    return dict();
