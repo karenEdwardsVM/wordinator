@@ -50,7 +50,6 @@ def add_list():
 
 #@auth.requires_signature()
 def get_word():
-    print("Running get_word")
     update_seen = int(request.vars.update_seen or 0)
     list_id = int(request.vars.list_id or 0)
 
@@ -61,8 +60,6 @@ def get_word():
     )
     word = word[0].as_dict()
 
-    print("Got", word)
-
     if update_seen == 1:
         db(db.words.id == word["id"]).update(
             ts = int(time.time()),
@@ -72,7 +69,6 @@ def get_word():
     return json.dumps(word)
 
 def get_words():
-    print("Running get words!", int(request.vars.count))
     count = int(request.vars.count)
     return json.dumps([json.loads(get_word()) for i in range(0, count)])
 
