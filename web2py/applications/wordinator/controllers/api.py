@@ -25,6 +25,7 @@
 #@auth.requires_signature()
 
 import time
+import json
 
 def add_list():
     list_name = request.vars.list_name
@@ -60,20 +61,21 @@ def get_word():
         orderby = '<random>',
         limitby = (0,1),
     )
+    word = word[0].as_dict()
 
-    print("Got", word, word[0])
+    print("Got", word)
 
     if update_seen == 1:
-        db(db.words.id == word[0]["id"]).update(
+        db(db.words.id == word["id"]).update(
             ts = int(time.time()),
-            seen = int(word[0].seen) + 1,
+            seen = int(word.seen) + 1,
         )
 
-    return response.json(word)
+    return json.dumps(word)
 
 def get_words():
     count = int(request.vars.count or 0)
-    return [get_word() for i in range(0, count)]
+    return json.dumps([json.loads(get_word()) for i in range(0, count)])
 
 #def get_high_scores
     
