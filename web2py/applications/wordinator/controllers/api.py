@@ -27,6 +27,9 @@
 import time
 import json
 
+def get_user_email():
+    return None if auth.user is None else auth.user.email
+
 def add_list():
     list_name = request.vars.list_name
     content = request.vars.content
@@ -34,6 +37,11 @@ def add_list():
 
     # add list to list table
     list_id = db.lists.insert(name = list_name)
+
+    # add owner to the user lists table
+    if get_user_email():
+        print("Adding list to email", get_user_email(), list_id)
+        db.user_lists.insert(user_email = get_user_email(), list_id = list_id)
 
     inserted = 0
     # fill word table with list words, definitions, 1 by 1
@@ -77,5 +85,16 @@ def get_word():
 def get_words():
     count = int(request.vars.count or 0)
     return json.dumps([json.loads(get_word()) for i in range(0, count)])
+
+#@auth.requires_signature()
+def get_user_lists():
+    user_email = request.vars.email
+
+    lists = db(db.user_lists.user_email == user_email).select(db.user_lists.ALL)
+
+    for l in lists:
+        print("Got list: ", l)
+
+    return json.dumps([])
 
 #def get_high_scores():

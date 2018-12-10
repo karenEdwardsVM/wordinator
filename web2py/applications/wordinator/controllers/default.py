@@ -61,4 +61,7 @@ def home():
     return dict()
 
 def list():
-    return dict();
+    return dict()
+
+def test():
+    return dict()
