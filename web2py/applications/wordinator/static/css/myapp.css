@@ -44,7 +44,11 @@ div.quiz-container {
     align-items: center;
     padding: 10px;
     padding-top: 20px;
-    flex-direction: row;
+    flex-direction: column;
+}
+
+div.instructions {
+    padding: 30px;
 }
 
 div.quiz-box {
@@ -62,6 +66,16 @@ ul.flex-outer {
     list-style-type: none;
     border-radius: 5px;
     background-color: #CA226B;
+    padding: 10px;
+    width: 100%;
+}
+
+form {
+    background-color: #2C3539;
+    border-radius: 5px;
+}
+
+h4 {
     padding: 10px;
 }
 

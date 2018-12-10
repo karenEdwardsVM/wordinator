@@ -36,7 +36,8 @@
       </div>
     </header>
     <main>
-      {{include}}
+         <title>{{=response.title or URL()}}</title>
+         {{include}}
     </main>
     <!-- <footer class="black">
       <div class="silver center padded social">
