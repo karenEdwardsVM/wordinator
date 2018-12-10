@@ -33,10 +33,11 @@ db.define_table(
 db.define_table(
     'words',
     Field('list_id'),
-    Field('word'),
+    Field('word', 'text'),
     Field('definition', 'text'),
-    Field('seen', 'text'),
+    Field('seen'),
     Field('correct'),
+    Field('ts'),
 )
 
 db.define_table(

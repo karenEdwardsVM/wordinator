@@ -136,3 +136,6 @@ CREATE TABLE "lists"(
     "name" TEXT
 );
 success!
+timestamp: 2018-12-09T17:57:43.818267
+ALTER TABLE "words" ADD "ts" CHAR(512);
+success!
