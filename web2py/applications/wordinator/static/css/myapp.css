@@ -2,7 +2,7 @@
 /* line 5, ../sass/_main.scss */
 html {
     font-family: monospace;
-    background-color: #BCC6CC;
+    background-color: #BCC6CC !important;
 }
 
 nav.navigation_bar {
@@ -30,6 +30,16 @@ a {
 
 a:first-child {
     margin-right: 5px;
+}
+
+/*Styling for the quiz-box*/
+div.quiz-box {
+    display: flex;
+    justify-content: center;
+    border-radius: 2px;
+    border-color: #CA226B;
+    border-radius: 2px;
+    border-style: solid;
 }
 
 /* Styling for the form*/
@@ -69,7 +79,6 @@ ul {
 }
 
 li {
-  width: 100px;
   margin: 10px;
   font-size: 18;
 }
