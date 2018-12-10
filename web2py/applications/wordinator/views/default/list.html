@@ -1,0 +1,51 @@
+{{extend 'layout.html'}}
+
+{{block head}}
+{{end}}
+<script src="{{=URL('static', 'js/vue.js')}}"></script>
+<head>
+
+    <script>
+        var add_list_url = "{{=URL('api', 'add_list', user_signature=True)}}";
+        // var get_words_url = "{{=URL('api', 'add_list', user_signature=True)}}";
+
+        const submit_list = () => {
+            var list_name = document.getElementById("list").value;
+            var list_content = document.getElementById("content").value;
+            console.log("Submitting: list_name: ", list_name, "list_content: ",
+                        list_content, "add_list_url: ", add_list_url);
+
+            list_content = list_content.split("\n").join("|");
+
+            $.get(add_list_url, {list_name: list_name, content: list_content}, (result) => {
+                console.log(result);
+            });
+        }
+    </script>
+</head>
+<body>
+    <div class="main_content">
+        <div class="quiz-container">
+            <div class="quiz-box">
+                <div>
+                    <ul class="flex-outer">
+                        <!-- pull definitions -->
+                        <li>
+                            <label for="list_name">List Name:</label>
+                            <input type="list_name" id="list" placeholder="Enter your list name">
+                        </li>
+                        <li>
+                            <label for="content">Words:</label>
+                            <textarea name="content" id="content" placeholder="Enter list here"></textarea>
+                        </li>
+                        <li>
+                            <button id="submit" type="submit" onclick="submit_list();">Submit</button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+  <!-- ################## Reload the page on comment add ###########################3 -->
+<script src="{{=URL('static', 'js/default_index.js')}}"></script>
