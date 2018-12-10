@@ -5,65 +5,9 @@
 <!-- <script src="{{=URL('static', 'js/vue.js')}}"></script> -->
 <head>
 <script>
-    let match = window.location.href.match(/list_id=([0123456789]*)/);
-    var user_list_id = (match && Number(match[1])) || 0;
-    var get_words_url = "{{=URL('api', 'get_words')}}";
-    var get_word_url = "{{=URL('api', 'get_word')}}";
-    var first_word = "";
-    var word_array = [];
-
-    function shuffle(a) {
-        var j, x, i;
-        for (i = a.length - 1; i > 0; i--) {
-            j = Math.floor(Math.random() * (i + 1));
-            x = a[i];
-            a[i] = a[j];
-            a[j] = x;
-        }
-        return a;
-    }
-
-    const run_get_words = () => {
-        $.get(get_words_url, {count: 6, list_id: user_list_id}, (result) => {
-            result = JSON.parse(result);
-
-            first_word = result[0].definition;
-            $("#quiz_word").html(result[0].word);
-
-            for(let i = 0; i < result.length; i++) {
-                word_array.push(result[i].definition)
-            }
-            word_array = shuffle(word_array);
-
-            for(let i = 0; i < word_array.length; i++) {
-                let element = (
-                    `<li>
-                        <button onclick="submit_answer(${i});">
-                            ${word_array[i]}
-                        </button>
-                    </li>`
-                );
-                $(`#word-box`).append(element);
-            }
-        });
-    };
-
-    $(document).ready(() => {
-        if (user_list_id) {
-          run_get_words();
-        } else {
-          alert("No list found, please specify one in the url.");
-        }
-    });
-
     const submit_answer = (n) => {
-        console.log("Word is: ", first_word);
-        console.log("Answer is: ", word_array[n]);
-        if(word_array[n] == first_word) {
-            console.log("Correct");
-        } else {
-            console.log("Incorrect");
-        }
+        console.log("Submitting answer");
+        window.location.href = `/wordinator/default/quiz?list_id=${n}`;
     }
 
 </script>
@@ -73,13 +17,16 @@
 
         <div class="quiz-container">
             <div class="instructions">
-                Choose the correct translation for the word.
+                Choose the list you want to be quizzed on.
             </div>
             <div class="quiz-box">
                 <form>
-                    <h4 id="quiz_word">Word:</h4>
+                    <h4 id="quiz_word">Lists:</h4>
                     <ul class="flex-outer" id="word-box">
                         <!-- pull definitions -->
+                    <li>
+                        <button onclick="submit_answer(4);">Button</button>
+                    </li>
                     </ul>
                 </form>
             </div>
