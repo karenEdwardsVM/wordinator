@@ -25,22 +25,24 @@
         let word_array = [];
         $.get(get_word_url, {list_id:4}, (result) => {
             $("#quiz_word").html(result[0].word);
-            word_array[0] = result[0].definition;
+            word_array.push(result[0].definition);
             // console.log(result[0].word);
         });
+        console.log("word_array" ,word_array);
 
         for(let i = 1; i < 5; i++)
         {
             $.get(get_word_url, {list_id:4}, (result) => {
                 // console.log("Getting result");
                 // word_array[i] = $(`#word${i}`).html(result[0].definition);
-                word_array[i] = result[0].definition;
+                word_array.push(result[0].definition);
             });
         }
         console.log("word_array ", word_array);
         shuffle(word_array);
-        console.log("word_array ", word_array);
-        console.log("word_array[0] ", word_array[0]);
+        console.log("after shuffle: ", word_array);
+        // console.log("word_array ", word_array);
+        // console.log("word_array[1] ", word_array[1]);
         for(let i = 0; i < word_array.length; i++) {
             $(`#word${i}`).html(word_array[i]);
         }
