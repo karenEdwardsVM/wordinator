@@ -24,8 +24,7 @@
         $.get(get_words_url, {count:6, list_id: 4}, (result) => {
             result = JSON.parse(result);
             let word_array = []
-            //console.log("WA", word_array)
-            //console.log("WA", word_array)
+            console.log("WA", word_array)
   
             $("#quiz_word").html(result[0].word);
 

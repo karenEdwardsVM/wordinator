@@ -3,7 +3,7 @@
 *errors*
 gluon/*
 .log
-admin/sessions/
+admin
 *.log
 *.sqlite
 *parameters*
