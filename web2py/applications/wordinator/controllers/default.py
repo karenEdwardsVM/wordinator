@@ -63,5 +63,5 @@ def home():
 def list():
     return dict()
 
-def test():
+def quiz():
     return dict()

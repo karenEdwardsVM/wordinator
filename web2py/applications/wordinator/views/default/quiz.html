@@ -6,6 +6,9 @@
 <!-- <script src="{{=URL('static', 'js/vue.js')}}"></script> -->
 <head>
 <script>
+    let match = window.location.href.match(/list_id=([0123456789]*)/);
+    var user_list_id = (match && Number(match[1])) || 0;
+
     var get_words_url = "{{=URL('api', 'get_words')}}";
     var get_word_url = "{{=URL('api', 'get_word')}}";
     var first_word = "";
@@ -23,7 +26,7 @@
     }
 
     const run_get_words = () => {
-        $.get(get_words_url, {count:6, list_id:4}, (result) => {
+        $.get(get_words_url, {count: 6, list_id: user_list_id}, (result) => {
             result = JSON.parse(result);
 
             first_word = result[0].definition;

@@ -65,11 +65,12 @@ def get_word():
     update_seen = int(request.vars.update_seen or 0)
     list_id = int(request.vars.list_id or 0)
 
-    word = db(db.words.seen < 6 & list_id == db.words.list_id).select(
+    word = db(list_id == db.words.list_id).select(
         db.words.ALL,
         orderby = '<random>',
         limitby = (0,1),
     )
+
     word = word[0].as_dict()
 
     if update_seen == 1:
@@ -78,7 +79,6 @@ def get_word():
             seen = int(word["seen"]) + 1,
         )
 
-    #print("Got word ", word)
     return json.dumps(word)
 
 #@auth.requires_signature()
@@ -90,11 +90,19 @@ def get_words():
 def get_user_lists():
     user_email = request.vars.email
 
-    lists = db(db.user_lists.user_email == user_email).select(db.user_lists.ALL)
+    lists = db(db.user_lists.user_email == user_email and db.lists.id == db.user_lists.list_id).select(
+        db.lists.name,
+        db.user_lists.ALL
+    )
 
+    out = []
+    
     for l in lists:
-        print("Got list: ", l)
+        out.append({
+            "name": l["lists"]["name"],
+            "list_id": l["user_lists"]["list_id"]
+        })
 
-    return json.dumps([])
+    return json.dumps(out)
 
 #def get_high_scores():
