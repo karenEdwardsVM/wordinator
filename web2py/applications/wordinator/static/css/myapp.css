@@ -179,3 +179,11 @@ li {
 .list-name-input {
   color: black;
 }
+
+div.word-select {
+  cursor: pointer !important;
+}
+
+div.word-select:active {
+  color: gray;
+}
