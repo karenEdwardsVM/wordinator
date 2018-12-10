@@ -46,6 +46,12 @@ db.define_table(
 )
 
 db.define_table(
+    'user_lists',
+    Field('user_email', 'text'),
+    Field('list_id')
+)
+
+db.define_table(
     'scores',
     Field('list_id'),
     Field('user_email'),

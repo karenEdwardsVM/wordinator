@@ -18,7 +18,8 @@
             list_content = list_content.split("\n").join("|");
 
             $.get(add_list_url, {list_name: list_name, content: list_content}, (result) => {
-                console.log(result);
+                const list_id = JSON.parse(result).list_id;
+                window.location.href = `/wordinator/default/quiz.html?list_id=${list_id}`;
             });
         };
     </script>
