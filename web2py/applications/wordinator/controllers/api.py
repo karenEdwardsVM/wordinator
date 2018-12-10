@@ -35,23 +35,25 @@ def add_list():
     # add list to list table
     list_id = db.lists.insert(name = list_name)
 
+    inserted = 0
     # fill word table with list words, definitions, 1 by 1
     for s in content.split("|"):
-        word, definition = s.split(",")
-        db.words.insert(
-            list_id = list_id,
-            word = word,
-            definition = definition,
-            seen = 0,
-            correct = 0,
-            ts = 0,
-        )
+        if len(s) > 2:
+            word, definition = s.split(",")
+            db.words.insert(
+                list_id = list_id,
+                word = word,
+                definition = definition,
+                seen = 0,
+                correct = 0,
+                ts = 0,
+            )
+            inserted = inserted + 1
 
-    return json.dumps(dict(list_id = list_id, inserted = len(content.split("|"))))
+    return json.dumps(dict(list_id = list_id, inserted = inserted))
 
 #@auth.requires_signature()
 def get_word():
-    #print("Vars", request.vars.update_seen or 0)
     update_seen = int(request.vars.update_seen or 0)
     list_id = int(request.vars.list_id or 0)
 
@@ -67,17 +69,12 @@ def get_word():
             ts = int(time.time()),
             seen = int(word["seen"]) + 1,
         )
-    print("Got word ", word)
+
+    #print("Got word ", word)
     return json.dumps(word)
 
 #@auth.requires_signature()
 def get_words():
-    # count = int(request.vars.count)
-    # print("count = ", count)
-    # a = json.dumps([json.loads(get_word()) for i in range(0, count)])
-    # print("a = ", a)
-    # return a
-    # return json.dumps([json.loads(get_word()) for i in range(0, count)])
     count = int(request.vars.count or 0)
     return json.dumps([json.loads(get_word()) for i in range(0, count)])
 
