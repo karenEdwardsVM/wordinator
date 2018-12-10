@@ -3,18 +3,27 @@
 {{block head}}
 {{end}}
 <!-- <script src="{{=URL('static', 'js/vue.js')}}"></script> -->
-<!-- <script>
-    var add_post_url = "{{=URL('api', 'add_post', user_signature=True)}}";
-    var get_post_list_url = "{{=URL('api', 'get_post_list')}}";
-    Like callbacks.
-    var get_likers_url = "{{=URL('api', 'get_likers')}}"
-    var get_reply_url = "{{=URL('api', 'get_reply_list', user_signature=False)}}";
-</script> -->
-<div class="main_content">
-    <head>
-    </head>
+<head>
+<script>
+    var get_words_url = "{{=URL('api', 'get_words', user_signature=True)}}";
 
-    <body>
+    const run_get_words = () => {
+
+        $.get(get_words_url, {count:5}, (result) => {
+            $("#word1").value = result[0];
+            $("#word2").value = result[0];
+            $("#word3").value = result[0];
+            $("#word4").value = result[0];
+            $("#word5").value = result[0];
+        });
+    }
+    // const submit_words = () => {
+    //     }
+</script>
+</head>
+<body>
+    <div class="main_content">
+
         <div class="quiz-container">
             <div class="quiz-box">
                 <form>
@@ -22,25 +31,28 @@
                     <ul class="flex-outer">
                         <!-- pull definitions -->
                         <li>
-                            <label for="definition">Def 1: </label>
+                            <label id="word1" for="definition">Def 1: </label>
                         </li>
                         <li>
-                            <label for="definition">Def 2: </label>
+                            <label id="word2" for="definition">Def 2: </label>
                         </li>
                         <li>
-                            <label for="definition">Def 3: </label>
+                            <label id="word3" for="definition">Def 3: </label>
                         </li>
                         <li>
-                            <label for="definition">Def 4: </label>
+                            <label id="word4" for="definition">Def 4: </label>
                         </li>
                         <li>
-                            <button id="submit" type="submit">Submit</button>
+                            <label id="word5" for="definition">Def 5: </label>
+                        </li>
+                        <li>
+                            <button id="submit" type="submit" onclick="">Submit</button>
                         </li>
                     </ul>
                 </form>
             </div>
         </div>
-    </body>
-</div>
+    </div>
+</body>
   <!-- ################## Reload the page on comment add ###########################3 -->
 <!-- <script src="{{=URL('static', 'js/default_index.js')}}"></script> -->

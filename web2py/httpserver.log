@@ -7366,3 +7366,33 @@
 =======
 >>>>>>> 81d8eef62c79cfeb744b5239e5f73b1cd370118b
 >>>>>>> ef3e47bcee14aaf15d1e486706b72868f9b36901
+127.0.0.1, 2018-12-09 22:38:41, GET, /wordinator/default/index, HTTP/1.1, 200, 0.070296
+127.0.0.1, 2018-12-09 22:38:41, GET, /wordinator/static/font-awesome-4.6.3/css/font-awesome.min.css, HTTP/1.1, 200, 0.002142
+127.0.0.1, 2018-12-09 22:38:41, GET, /wordinator/static/css/web2py.css, HTTP/1.1, 200, 0.001912
+127.0.0.1, 2018-12-09 22:38:41, GET, /wordinator/static/css/stupid.css, HTTP/1.1, 200, 0.003463
+127.0.0.1, 2018-12-09 22:38:41, GET, /wordinator/static/js/calendar.js, HTTP/1.1, 200, 0.000463
+127.0.0.1, 2018-12-09 22:38:41, GET, /wordinator/static/js/jquery.js, HTTP/1.1, 200, 0.001762
+127.0.0.1, 2018-12-09 22:38:41, GET, /wordinator/static/js/web2py.js, HTTP/1.1, 200, 0.000768
+127.0.0.1, 2018-12-09 22:38:41, GET, /wordinator/static/js/marked.min.js, HTTP/1.1, 200, 0.000465
+127.0.0.1, 2018-12-09 22:38:41, GET, /wordinator/static/js/vue.min.js, HTTP/1.1, 200, 0.000384
+127.0.0.1, 2018-12-09 22:38:41, GET, /wordinator/static/css/myapp.css, HTTP/1.1, 200, 0.056797
+127.0.0.1, 2018-12-09 22:38:41, GET, /wordinator/static/css/calendar.css, HTTP/1.1, 200, 0.060066
+127.0.0.1, 2018-12-09 22:38:41, GET, /wordinator/static/css/custom.css, HTTP/1.1, 200, 0.062656
+127.0.0.1, 2018-12-09 22:38:42, GET, /wordinator/static/font-awesome-4.6.3/fonts/fontawesome-webfont.woff2, HTTP/1.1, 200, 0.000379
+127.0.0.1, 2018-12-09 22:38:43, GET, /favicon.ico, HTTP/1.1, 400, 0.000192
+127.0.0.1, 2018-12-09 22:38:43, GET, /favicon.ico, HTTP/1.1, 400, 0.000420
+127.0.0.1, 2018-12-09 22:39:37, GET, /wordinator/default/index, HTTP/1.1, 200, 0.021602
+127.0.0.1, 2018-12-09 22:39:37, GET, /wordinator/static/css/custom.css, HTTP/1.1, 200, 0.001444
+127.0.0.1, 2018-12-09 22:39:37, GET, /wordinator/static/css/calendar.css, HTTP/1.1, 200, 0.001502
+127.0.0.1, 2018-12-09 22:39:37, GET, /wordinator/static/css/web2py.css, HTTP/1.1, 200, 0.002543
+127.0.0.1, 2018-12-09 22:39:37, GET, /wordinator/static/font-awesome-4.6.3/css/font-awesome.min.css, HTTP/1.1, 200, 0.002960
+127.0.0.1, 2018-12-09 22:39:37, GET, /wordinator/static/css/myapp.css, HTTP/1.1, 200, 0.001328
+127.0.0.1, 2018-12-09 22:39:37, GET, /wordinator/static/css/stupid.css, HTTP/1.1, 200, 0.003026
+127.0.0.1, 2018-12-09 22:39:37, GET, /wordinator/static/js/jquery.js, HTTP/1.1, 200, 0.000430
+127.0.0.1, 2018-12-09 22:39:37, GET, /wordinator/static/js/calendar.js, HTTP/1.1, 200, 0.000516
+127.0.0.1, 2018-12-09 22:39:37, GET, /wordinator/static/js/web2py.js, HTTP/1.1, 200, 0.001081
+127.0.0.1, 2018-12-09 22:39:37, GET, /wordinator/static/js/marked.min.js, HTTP/1.1, 200, 0.001186
+127.0.0.1, 2018-12-09 22:39:37, GET, /wordinator/static/js/vue.min.js, HTTP/1.1, 200, 0.000683
+127.0.0.1, 2018-12-09 22:39:38, GET, /wordinator/static/font-awesome-4.6.3/fonts/fontawesome-webfont.woff2, HTTP/1.1, 200, 0.000374
+127.0.0.1, 2018-12-09 22:39:39, GET, /favicon.ico, HTTP/1.1, 400, 0.000318
+127.0.0.1, 2018-12-09 22:39:39, GET, /favicon.ico, HTTP/1.1, 400, 0.000239
