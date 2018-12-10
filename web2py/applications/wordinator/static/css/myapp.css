@@ -76,7 +76,10 @@ form {
 }
 
 h4 {
+    display: flex;
     padding: 10px;
+    justify-content: center;
+    align-items: center;
 }
 
 /* Styling for the form*/
