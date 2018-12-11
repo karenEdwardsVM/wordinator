@@ -1,4 +1,11 @@
 let message_loop = null;
+let on_messages = [];
+
+const on_message = handler => {
+    if (!on_messages.includes(handler)) {
+        on_messages.push(handler);
+    }
+};
 
 Notification.requestPermission().then(permission => {
     if (permission == "granted") {
@@ -11,7 +18,9 @@ Notification.requestPermission().then(permission => {
                 get_unread_messages("mine").then(messages => {
                     messages.forEach(m => {
                         new Notification(`Message from ${m.from}: ${m.content}`);
-//                        $("#message-box").append(...);
+                        on_messages.forEach(handler => {
+                            handler(m);
+                        });
                     });
                 });
             });

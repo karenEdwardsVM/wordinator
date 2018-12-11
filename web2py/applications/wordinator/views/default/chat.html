@@ -1,0 +1,71 @@
+{{extend 'layout.html'}}
+
+{{block head}}
+{{end}}
+<script src="{{=URL('static', 'js/vue.js')}}"></script>
+<script src="{{=URL('static', 'js/helpers.js')}}"></script>
+<script src="{{=URL('static', 'js/message_loop.js')}}"></script>
+<head>
+    <script>
+        const reply_to = (str) => {
+            $("#chat-recip").val(str);
+        };
+
+        const send_chat = () => {
+            get_user_email().then(email => {
+                send_message(email, $("#chat-recip").val(), $("#content").val());
+            });
+        };
+
+        const add_message_box = m => {
+            const date = new Date(m.sent_at).toLocaleDateString("en-US");
+            const element =
+                `<li class="message-element">
+                    <div class="message-info">
+                        <span>${m.from} at ${date}</span>
+                        <input type="button" class="reply-button" onclick="reply_to('${m.from}');" value="Reply"/>
+                    </div>
+                    <div>
+                        ${m.content}
+                    </div>
+                </li>`;
+            $("#messages-received").prepend(element);
+        };
+
+        on_message(add_message_box);
+
+        get_all_messages("mine").then(messages => {
+            $("#messages-received").html("");
+            messages.forEach(m => {
+                add_message_box(m);
+            });
+
+        });
+    </script>
+</head>
+<body>
+    <div class="main_content">
+        <div class="quiz-container">
+            <div class="quiz-box">
+                <ul class="flex-outer chat-page" id="send-box">
+                    <!-- pull definitions -->
+                    <li>
+                        <label for="content">To:</label>
+                        <input id="chat-recip" class="chat-recip" type="text" placeholder="Enter recipient">
+                    </li>
+                    <li>
+                        <label for="content"></label>
+                        <textarea name="content" class="chat-message" id="content" placeholder="Enter message here"></textarea>
+                    </li>
+                    <li>
+                        <input id="send" onclick="send_chat();" type="button" value="Send"></input>
+                    </li>
+                </ul>
+                <ul class="flex-outer chat-page" id="messages-received">
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+  <!-- ################## Reload the page on comment add ###########################3 -->
+<script src="{{=URL('static', 'js/default_index.js')}}"></script>
