@@ -205,3 +205,18 @@ div.word-select {
 div.word-select:active {
   color: gray;
 }
+
+div.toggling {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}
+
+input {
+    border-radius: 5px;
+    background-color: #2C3539 !important;
+    width: 100px;
+    height: 40px;
+    font-size: 15px;
+}
