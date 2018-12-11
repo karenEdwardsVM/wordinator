@@ -4,12 +4,14 @@
 {{end}}
 
 <head>
+
+<script src="{{=URL('static', 'js/helpers.js')}}"></script>
 <script>
 const redirect_list = (list_id) => {
-  window.location.href = `/wordinator/default/quiz?list_id=${list_id}`;
+  redirect_to(`/wordinator/default/quiz?list_id=${list_id}`);
 };
 
-$(document).ready(() => {
+const populate_lists = () => {
     $.get("/wordinator/api/get_user_lists", {}, (result) => {
         $("#list-box").html("");
         result = JSON.parse(result);
@@ -23,6 +25,18 @@ $(document).ready(() => {
               `);
               $("#list-box").append(element);
         });
+    });
+};
+
+$(document).ready(() => {
+    get_user_email().then(email => {
+        if (email != "None") {
+            populate_lists();
+        } else {
+            const next_url = window.location.href;
+            console.log("User not logged in, redirecting to login.");
+            redirect_to(`/wordinator/default/user/login?_next=${next_url}`);
+        }
     });
 });
 </script>

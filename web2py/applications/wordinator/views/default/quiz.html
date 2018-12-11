@@ -4,6 +4,8 @@
 {{block head}}
 {{end}}
 <head>
+
+<script src="{{=URL('static', 'js/helpers.js')}}"></script>
 <script>
     let match = window.location.href.match(/list_id=([0123456789]*)/);
     var user_list_id = (match && Number(match[1])) || 0;
@@ -57,7 +59,16 @@
     };
 
     $(document).ready(() => {
-        run_get_words();
+        get_user_email().then(email => {
+            if (email != "None") {
+                run_get_words();
+            } else {
+                const next_url = window.location.href;
+                console.log("User not logged in, redirecting to login.");
+                redirect_to(`/wordinator/default/user/login?_next=${next_url}`);
+
+            }
+        });
     });
 
     // When the user clicks on <div>, open the popup
