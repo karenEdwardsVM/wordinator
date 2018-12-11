@@ -66,24 +66,28 @@ def get_high_scores():
 
     list_id = int(request.vars.list_id)
 
-#    'user_lists',
-#    Field('user_email', 'text'),
-#    Field('list_id'),
-#    Field('correct', default=0),
-#    Field('played', default=0)
-
-    lists = db.executesql("""
+    scores = db.executesql("""
 SELECT
-    user_email, list_id, correct, played
+    user_email, list_id, correct, played,
+    ((correct * 10) - ((played - correct) * 5)) as score
 FROM user_lists WHERE list_id = {query_list_id}
-ORDER BY correct DESC;
+ORDER BY score DESC;
     """.format(
         query_list_id = list_id
     ))
 
-    print(lists)
+    out = []
 
-    return []
+    for s in scores:
+        out.append({
+            "user_email": str(s[0]),
+            "list_id": int(s[1]),
+            "correct": int(s[2]),
+            "played": int(s[3]),
+            "score": int(s[4])
+        })
+
+    return json.dumps(out)
 
 #@auth.requires_signature()
 def get_user_lists():
