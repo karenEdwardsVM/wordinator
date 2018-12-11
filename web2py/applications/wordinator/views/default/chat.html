@@ -29,14 +29,14 @@
                         ${m.content}
                     </div>
                 </li>`;
-            $("#messages-received").append(element);
+            $("#messages-received").prepend(element);
         };
 
         on_message(add_message_box);
 
         get_all_messages("mine").then(messages => {
             $("#messages-received").html("");
-            messages.forEach(m => {
+            messages.reverse().forEach(m => {
                 add_message_box(m);
             });
 
