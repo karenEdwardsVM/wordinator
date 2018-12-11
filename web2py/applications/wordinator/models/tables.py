@@ -49,5 +49,7 @@ db.define_table(
 db.define_table(
     'user_lists',
     Field('user_email', 'text'),
-    Field('list_id')
+    Field('list_id'),
+    Field('correct', default=0),
+    Field('played', default=0)
 )

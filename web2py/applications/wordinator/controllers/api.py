@@ -60,6 +60,31 @@ def get_words():
     count = int(request.vars.count or 0)
     return json.dumps([json.loads(get_word()) for i in range(0, count)])
 
+def get_high_scores():
+    if not request.vars.list_id:
+        return json.dumps([])
+
+    list_id = int(request.vars.list_id)
+
+#    'user_lists',
+#    Field('user_email', 'text'),
+#    Field('list_id'),
+#    Field('correct', default=0),
+#    Field('played', default=0)
+
+    lists = db.executesql("""
+SELECT
+    user_email, list_id, correct, played
+FROM user_lists WHERE list_id = {query_list_id}
+ORDER BY correct DESC;
+    """.format(
+        query_list_id = list_id
+    ))
+
+    print(lists)
+
+    return []
+
 #@auth.requires_signature()
 def get_user_lists():
     user_email = request.vars.email or get_user_email()
@@ -91,8 +116,7 @@ WHERE user_email = '{email}';
 #@auth.requires_signature()
 def score_word():
     print("SW called with", request.vars)
-
-    if (not request.vars.word_id) or (not request.vars.correct):
+    if (not request.vars.word_id) or (not request.vars.correct) or (not get_user_email()):
         return False
 
     word_id = int(request.vars.word_id)
@@ -102,8 +126,53 @@ def score_word():
 
     if len(word) == 0:
         return "{\"error\": \"Couldn't find word: " + str(word_id) + "\"}"
+    else:
+        word = word[0].as_dict()
 
-    word = word[0].as_dict()
+    list_entry = db.executesql("""
+SELECT
+    id,
+    user_email,
+    list_id,
+    correct,
+    played
+FROM user_lists
+WHERE user_email = '{email}' AND list_id = {list_id};
+    """.format(
+        email = get_user_email(),
+        list_id = word["list_id"]
+    ))
+
+    if len(list_entry) == 0:
+        list_entry = {
+            "user_email": get_user_email(),
+            "list_id": word["list_id"],
+            "correct": 0,
+            "played": 0
+        }
+        list_entry["id"] = db.user_lists.insert(
+            user_email = get_user_email(),
+            list_id = word["list_id"],
+            correct = 0,
+            played = 0
+        )
+    else:
+        list_entry = list_entry[0]
+        list_entry = {
+            "id": int(list_entry[0]),
+            "user_email": str(list_entry[1]),
+            "list_id": int(list_entry[2]),
+            "correct": int(list_entry[3]),
+            "played": int(list_entry[4]),
+        }
+
+    list_entry["correct"] = list_entry["correct"] + correct
+    list_entry["played"] = list_entry["played"] + 1
+
+    db(db.user_lists.id == list_entry["id"]).update(
+        correct = list_entry["correct"],
+        played = list_entry["played"]
+    )
 
     if correct == 1:
         db(db.words.id == word_id).update(
@@ -115,5 +184,3 @@ def score_word():
         )
 
     return "ok"
-
-#def get_high_scores():
