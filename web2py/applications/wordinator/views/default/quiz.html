@@ -8,10 +8,14 @@
     let match = window.location.href.match(/list_id=([0123456789]*)/);
     var user_list_id = (match && Number(match[1])) || 0;
 
+    var score_word_url = "{{=URL('api', 'score_word')}}";
     var get_words_url = "{{=URL('api', 'get_words')}}";
     var get_word_url = "{{=URL('api', 'get_word')}}";
     var first_word = "";
+    var word_data = {};
     var word_array = [];
+
+    var round_number = 0;
 
     function shuffle(a) {
         var j, x, i;
@@ -30,6 +34,7 @@
             result = JSON.parse(result);
 
             first_word = result[0].definition;
+            word_data = result[0];
             $("#quiz_word").html(result[0].word);
 
             for(let i = 0; i < result.length; i++) {
@@ -70,10 +75,15 @@
         if(word_array[n] == first_word) {
             console.log("correct");
             pop_up("correct");
+            $.get(score_word_url, {word_id: word_data.id, correct: 1});
         } else {
             console.log("incorrect");
             pop_up("incorrect");
+            $.get(score_word_url, {word_id: word_data.id, correct: 0});
         }
+
+        // get our next word
+        round_number++;
         run_get_words();
     };
 </script>
