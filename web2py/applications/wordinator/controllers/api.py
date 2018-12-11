@@ -79,7 +79,7 @@ WHERE user_email = '{email}';
     ))
 
     out = []
-    
+
     for l in lists:
         out.append({
             "name": l[1],
