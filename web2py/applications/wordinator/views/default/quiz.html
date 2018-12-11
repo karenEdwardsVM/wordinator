@@ -40,20 +40,20 @@
             // for toggling quiz between english and other language
             var element = $("#toggle_button");
 
-            if (element.val() === "English") {
+            if (element.val() === "Word") {
                 first_word = result[0].definition;
-            } else if (element.val() === "Language") {
+            } else if (element.val() === "Definition") {
                 first_word = result[0].word;
             }
             word_data = result[0];
 
-            if (element.val() === "English") {
+            if (element.val() === "Word") {
                 $("#quiz_word").html(result[0].word);
 
                 for(let i = 0; i < result.length; i++) {
                     word_array.push(result[i].definition)
                 }
-            } else if (element.val() === "Language") {
+            } else if (element.val() === "Definition") {
                 $("#quiz_word").html(result[0].definition);
 
                 for(let i = 0; i < result.length; i++) {
@@ -66,9 +66,8 @@
             for(let i = 0; i < word_array.length; i++) {
                 let element = (
                     `<li>
-                        <div class="word-select" onclick="submit_answer(${i});">
-                            ${word_array[i]}
-                        </div>
+                        <input type="button" class="word-select" onclick="submit_answer(${i});" value="${word_array[i]}">
+                        </input>
                     </li>`
                 );
                 $("#word-box").append(element);
@@ -76,10 +75,39 @@
         });
     };
 
+    const run_get_score = () => {
+        $.get("/wordinator/api/get_high_scores", {list_id: user_list_id}, (result) => {
+            result = JSON.parse(result);
+            console.log("result for scores ", result);
+
+            $("#score-list").html(
+                    `<li class="score-entry-header">
+                        <div class="user-email">User:</div>
+                        <div class="user-score">Score:</div>
+                    </li>`
+                );
+            result.forEach(score => {
+                console.log("score is ", score)
+                let element = (`
+                <li class="score-entry">
+                    <div class="user-email">
+                        ${score.user_email}
+                    </div>
+                    <div class="user-score">
+                        ${score.score}
+                    </div>
+                </li>
+                 `);
+                $("#score-list").append(element);
+            });
+        });
+    };
+
     $(document).ready(() => {
         get_user_email().then(email => {
             if (email != "None") {
                 run_get_words();
+                run_get_score();
             } else {
                 const next_url = window.location.href;
                 console.log("User not logged in, redirecting to login.");
@@ -93,11 +121,11 @@
     {
         var element = $("#toggle_button");
         console.log(element.val());
-        if (element.val() === "English") {
-            element.val("Language");
+        if (element.val() === "Word") {
+            element.val("Definition");
         }
         else {
-            element.val("English");
+            element.val("Word");
         }
         run_get_words();
     }
@@ -127,6 +155,7 @@
         // get our next word
         round_number++;
         run_get_words();
+        run_get_score();
     };
 </script>
 </head>
@@ -137,7 +166,7 @@
                 Choose the correct translation for the word.
                 <div class="toggling">
                     <input type="button" id="toggle_button" class="toggle_button"
-                        value="English" onclick="toggle_quiz();"></input>
+                        value="Word" onclick="toggle_quiz();"></input>
                 </div>
             </div>
             <!--Creates the popup body-->
@@ -156,11 +185,7 @@
             <div class="score-box">
                 <div class="scores">
                     <h5>List Scores:</h5>
-                    <ul class="flex-outer" id="word-box">
-                    <div class="table-header">
-                        <div class="score-cols">User:</div>
-                        <div class="score-cols">Score:</div>
-                    </div>
+                    <ul class="flex-outer" id="score-list">
                     </ul>
                 </div>
             </div>
