@@ -3,11 +3,10 @@
 {{block head}}
 {{end}}
 <script src="{{=URL('static', 'js/vue.js')}}"></script>
+<script src="{{=URL('static', 'js/helpers.js')}}"></script>
 <head>
-
     <script>
         var add_list_url = "{{=URL('api', 'add_list', user_signature=True)}}";
-        // var get_words_url = "{{=URL('api', 'add_list', user_signature=True)}}";
 
         const submit_list = () => {
             var list_name = document.getElementById("list").value;
@@ -22,6 +21,16 @@
                 window.location.href = `/wordinator/default/quiz.html?list_id=${list_id}`;
             });
         };
+
+        $(document).ready(() => {
+            get_user_email().then(email => {
+                if (email == "None") {
+                    const next_url = window.location.href;
+                    console.log("User not logged in, redirecting to login.");
+                    redirect_to(`/wordinator/default/user/login?_next=${next_url}`);
+                }
+            });
+        });
     </script>
 </head>
 <body>
