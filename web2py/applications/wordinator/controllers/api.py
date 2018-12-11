@@ -67,17 +67,23 @@ def get_user_lists():
     if not user_email:
         return json.dumps([])
 
-    lists = db(db.user_lists.user_email == user_email and db.lists.id == db.user_lists.list_id).select(
-        db.lists.name,
-        db.user_lists.ALL
-    )
+    lists = db.executesql("""
+SELECT
+    list_id,
+    lists.name
+FROM user_lists
+LEFT JOIN lists ON (lists.id == user_lists.list_id)
+WHERE user_email = '{email}';
+    """.format(
+        email = user_email
+    ))
 
     out = []
     
     for l in lists:
         out.append({
-            "name": l["lists"]["name"],
-            "list_id": l["user_lists"]["list_id"]
+            "name": l[1],
+            "list_id": int(l[0])
         })
 
     return json.dumps(out)
