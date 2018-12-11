@@ -38,8 +38,8 @@ a:first-child {
 }
 
 
-/*Styling for the quiz-box and list-box*/
-div.quiz-container, div.list-container {
+/*Styling for the quiz-box and list-box, as well as score box*/
+div.quiz-container, div.list-container, div.score-container{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -53,7 +53,7 @@ div.instructions {
     padding-bottom: 50px;
 }
 
-div.quiz-box, div.list-selector {
+div.quiz-box, div.list-selector, div.score-box {
     display: flex;
     justify-content: center;
     border-radius: 2px;
@@ -72,16 +72,31 @@ ul.flex-outer {
     width: 100%;
 }
 
-form,div.list-of-lists {
+form, div.list-of-lists, div.scores {
     background-color: #2C3539;
     border-radius: 5px;
 }
 
-h4 {
+h4, h5 {
     display: flex;
     padding: 10px;
     justify-content: center;
     align-items: center;
+}
+
+div.score-cols {
+    display: flex;
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+div.table-header {
+    display: flex;
+    display: row;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 2px solid white;
 }
 
 /* Popup container */
