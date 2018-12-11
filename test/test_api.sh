@@ -18,4 +18,4 @@ curl -s "localhost:8000/wordinator/api/get_words?count=3&list_id=$list_id"; echo
 
 #curl -s 'localhost:8000/wordinator/api/get_user_lists?email=a@a.com'; echo ""
 
-
+#curl -s 'localhost:8000/wordinator/api/get_high_scores?list_id=48'
