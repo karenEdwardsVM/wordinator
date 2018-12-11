@@ -52,7 +52,6 @@ def _():
     response.menu += [
         (T('Add List'), False, URL('default', 'list')),
         (T('About'), False, URL('default', 'about')),
-        (T('Scores'), False, URL('default', 'scores')),
     ]
 
 
