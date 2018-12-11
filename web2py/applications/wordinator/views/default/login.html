@@ -2,32 +2,14 @@
 
 {{block head}}
 {{end}}
-<!-- <script src="{{=URL('static', 'js/vue.js')}}"></script> -->
-<!-- <script>
-    var add_post_url = "{{=URL('api', 'add_post', user_signature=True)}}";
-    var get_post_list_url = "{{=URL('api', 'get_post_list')}}";
-    Like callbacks.
-    var get_likers_url = "{{=URL('api', 'get_likers')}}"
-    var get_reply_url = "{{=URL('api', 'get_reply_list', user_signature=False)}}";
-</script> -->
 
+<script src="{{=URL('static', 'js/helpers.js')}}"></script>
+<script src="{{=URL('static', 'js/message_loop.js')}}"></script>
 <div class="main_content">
     <head>
     </head>
 
     <body>
-        <!-- <nav class="navigation_bar">
-            <div class="options">
-                <a onclick="Redirect_home();">Home</a>
-                <a>Login</a>
-                <a onclick="Redirect_about();">About</a>
-                <a>Home</a>
-                <a>Login</a>
-                <a>About</a>
-            </div> -->
-        </nav>
-
-
         <div class="login-container">
             <h2>Login</h2>
             <form>

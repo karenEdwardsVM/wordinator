@@ -53,3 +53,12 @@ db.define_table(
     Field('correct', default=0),
     Field('played', default=0)
 )
+
+db.define_table(
+    'user_messages',
+    Field('from_email', 'text'),
+    Field('to_email', 'text'),
+    Field('mcontent', 'text'),
+    Field('sent_at', default=0),
+    Field('has_been_read', default=0)
+)

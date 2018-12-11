@@ -6,6 +6,7 @@
 <head>
 
 <script src="{{=URL('static', 'js/helpers.js')}}"></script>
+<script src="{{=URL('static', 'js/message_loop.js')}}"></script>
 <script>
     let match = window.location.href.match(/list_id=([0123456789]*)/);
     var user_list_id = (match && Number(match[1])) || 0;

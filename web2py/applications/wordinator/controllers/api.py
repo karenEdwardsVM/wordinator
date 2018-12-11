@@ -188,3 +188,62 @@ WHERE user_email = '{email}' AND list_id = {list_id};
         )
 
     return "ok"
+
+#@auth.requires_signature()
+def send_message():
+    if (not request.vars["from"]) or (not request.vars["to"]) or (not request.vars["content"]):
+        return False
+
+    message_id = db.user_messages.insert(
+        from_email = request.vars["from"],
+        to_email = request.vars["to"],
+        mcontent = request.vars["content"],
+        sent_at = int(time.time()),
+        has_been_read = 0
+    )
+
+    return json.dumps({
+        "message_id": message_id
+    })
+
+def get_messages():
+    if (not request.vars["user_email"]) or (not request.vars["unread_only"]):
+        return False
+
+    email = request.vars.user_email
+    if email == "mine":
+        email = get_user_email()
+    if not email:
+        return False
+
+    query = """
+SELECT
+    from_email, to_email, mcontent, sent_at, has_been_read, id
+FROM user_messages
+WHERE to_email = '{email}'
+    """.format(
+        email = email
+    )
+
+    if int(request.vars.unread_only) == 1:
+        query += " AND has_been_read = 0"
+
+    query += ";"
+
+    messages = db.executesql(query)
+    out = []
+    for m in messages:
+        out.append({
+            "from": str(m[0]),
+            "to": str(m[1]),
+            "content": str(m[2]),
+            "sent_at": int(m[3]),
+            "read": int(m[4])
+        })
+
+    ids = (map(lambda m: str(m[5]), messages))
+    update_reads = "UPDATE user_messages SET has_been_read = 1 WHERE id IN (" + ", ".join(list(ids)) + ");"
+
+    db.executesql(update_reads)
+
+    return json.dumps(out)
