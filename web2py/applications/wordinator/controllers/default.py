@@ -65,3 +65,6 @@ def list():
 
 def quiz():
     return dict()
+
+def scores():
+    return dict()
