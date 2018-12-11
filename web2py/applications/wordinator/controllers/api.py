@@ -57,8 +57,17 @@ def get_word():
 
 #@auth.requires_signature()
 def get_words():
+    max_iterations = 20
     count = int(request.vars.count or 0)
-    return json.dumps([json.loads(get_word()) for i in range(0, count)])
+    out = []
+
+    while max_iterations > 0 and len(out) < count:
+        max_iterations -= 1
+        word = json.loads(get_word())
+        if not word in out:
+            out.append(word)
+
+    return json.dumps(out)
 
 def get_high_scores():
     if not request.vars.list_id:

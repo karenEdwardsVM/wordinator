@@ -11,6 +11,7 @@ Notification.requestPermission().then(permission => {
                 get_unread_messages("mine").then(messages => {
                     messages.forEach(m => {
                         new Notification(`Message from ${m.from}: ${m.content}`);
+//                        $("#message-box").append(...);
                     });
                 });
             });
