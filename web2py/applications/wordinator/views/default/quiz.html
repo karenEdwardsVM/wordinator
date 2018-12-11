@@ -41,7 +41,7 @@
 
             if (element.val() === "English") {
                 first_word = result[0].definition;
-            } else if (element.val() === "Language") {
+            } else if (element.val() === "Definition") {
                 first_word = result[0].word;
             }
             word_data = result[0];
@@ -52,7 +52,7 @@
                 for(let i = 0; i < result.length; i++) {
                     word_array.push(result[i].definition)
                 }
-            } else if (element.val() === "Language") {
+            } else if (element.val() === "Definition") {
                 $("#quiz_word").html(result[0].definition);
 
                 for(let i = 0; i < result.length; i++) {
@@ -121,7 +121,7 @@
         var element = $("#toggle_button");
         console.log(element.val());
         if (element.val() === "English") {
-            element.val("Language");
+            element.val("Definition");
         }
         else {
             element.val("English");
