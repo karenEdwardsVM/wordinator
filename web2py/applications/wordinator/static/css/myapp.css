@@ -184,7 +184,11 @@ li {
 }
 
 .list-name-input {
-  color: black;
+  color: white !important;
+}
+
+form.quiz-form {
+    width: 33vw;
 }
 
 div.word-select {
@@ -192,7 +196,7 @@ div.word-select {
 }
 
 div.word-select:active {
-  color: gray;
+     color: gray;
 }
 
 div.toggling {
@@ -208,6 +212,10 @@ input {
     width: 100px;
     height: 40px;
     font-size: 15px;
+}
+
+input.word-select {
+    width: 100% !important;
 }
 
 /* score box css */
