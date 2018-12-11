@@ -65,9 +65,8 @@
             for(let i = 0; i < word_array.length; i++) {
                 let element = (
                     `<li>
-                        <div class="word-select" onclick="submit_answer(${i});">
-                            ${word_array[i]}
-                        </div>
+                        <input type="button" class="word-select" onclick="submit_answer(${i});" value="${word_array[i]}">
+                        </input>
                     </li>`
                 );
                 $("#word-box").append(element);
@@ -75,10 +74,39 @@
         });
     };
 
+    const run_get_score = () => {
+        $.get("/wordinator/api/get_high_scores", {list_id: user_list_id}, (result) => {
+            result = JSON.parse(result);
+            console.log("result for scores ", result);
+
+            $("#score-list").html(
+                    `<li class="score-entry-header">
+                        <div class="user-email">User:</div>
+                        <div class="user-score">Score:</div>
+                    </li>`
+                );
+            result.forEach(score => {
+                console.log("score is ", score)
+                let element = (`
+                <li class="score-entry">
+                    <div class="user-email">
+                        ${score.user_email}
+                    </div>
+                    <div class="user-score">
+                        ${score.score}
+                    </div>
+                </li>
+                 `);
+                $("#score-list").append(element);
+            });
+        });
+    };
+
     $(document).ready(() => {
         get_user_email().then(email => {
             if (email != "None") {
                 run_get_words();
+                run_get_score();
             } else {
                 const next_url = window.location.href;
                 console.log("User not logged in, redirecting to login.");
@@ -126,6 +154,7 @@
         // get our next word
         round_number++;
         run_get_words();
+        run_get_score();
     };
 </script>
 </head>
@@ -155,11 +184,7 @@
             <div class="score-box">
                 <div class="scores">
                     <h5>List Scores:</h5>
-                    <ul class="flex-outer" id="word-box">
-                    <div class="table-header">
-                        <div class="score-cols">User:</div>
-                        <div class="score-cols">Score:</div>
-                    </div>
+                    <ul class="flex-outer" id="score-list">
                     </ul>
                 </div>
             </div>

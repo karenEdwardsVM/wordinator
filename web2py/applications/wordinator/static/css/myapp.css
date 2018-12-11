@@ -77,26 +77,15 @@ form, div.list-of-lists, div.scores {
     border-radius: 5px;
 }
 
+form {
+    /* width: 25vw; */
+}
+
 h4, h5 {
     display: flex;
     padding: 10px;
     justify-content: center;
     align-items: center;
-}
-
-div.score-cols {
-    display: flex;
-    padding: 10px;
-    justify-content: center;
-    align-items: center;
-}
-
-div.table-header {
-    display: flex;
-    display: row;
-    justify-content: center;
-    align-items: center;
-    border-bottom: 2px solid white;
 }
 
 /* Popup container */
@@ -219,4 +208,40 @@ input {
     width: 100px;
     height: 40px;
     font-size: 15px;
+}
+
+/* score box css */
+div.scores {
+    width: 40vw;
+}
+
+li.score-entry, li.score-entry-header {
+    display: flex;
+    justify-content: space-between;
+    padding-right: 20px;
+    padding-left: 20px;
+    align-items: center;
+    width: 100%;
+}
+
+li.score-entry {
+    /* justify-content: space-between !important; */
+}
+
+div.user-score {
+    display: flex;
+    padding-left: 10px;
+    font-size: medium;
+}
+
+div.user-email {
+    display: flex;
+    padding-right: 10px;
+    font-size: medium;
+}
+
+ul#score-list.flex-outer {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
 }
