@@ -56,18 +56,23 @@
     });
 
     // When the user clicks on <div>, open the popup
-    function pop_up() {
-        var popup = document.getElementById("myPopup");
-        popup.classList.toggle("show");
+    function pop_up(str) {
+        $("#myPopup").addClass("show");
+        $("#myPopup").html(str);
+
+        setTimeout(() => $("#myPopup").removeClass("show"), 1000);
     }
 
     const submit_answer = (n) => {
         console.log("Word is: ", first_word);
         console.log("Answer is: ", word_array[n]);
+
         if(word_array[n] == first_word) {
-            console.log("Correct");
+            console.log("correct");
+            pop_up("correct");
         } else {
-            console.log("Incorrect");
+            console.log("incorrect");
+            pop_up("incorrect");
         }
         run_get_words();
     };
@@ -79,16 +84,16 @@
             <div class="instructions">
                 Choose the correct translation for the word.
             </div>
+            <!--Creates the popup body-->
+            <div id="popup" class="popup">
+                <span class="popuptext" id="myPopup">Default</span>
+            </div>
             <div class="quiz-box">
                 <form>
                     <h4 id="quiz_word">Word:</h4>
                     <ul class="flex-outer" id="word-box">
                     </ul>
                 </form>
-            </div>
-                <!--Creates the popup body-->
-            <div class="popup" onclick="pop_up();">Click me!
-                <span class="popuptext" id="myPopup">Popup text...</span>
             </div>
         </div>
     </div>

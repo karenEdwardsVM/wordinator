@@ -49,6 +49,7 @@ div.quiz-container {
 
 div.instructions {
     padding: 30px;
+    padding-bottom: 50px;
 }
 
 div.quiz-box {
@@ -90,6 +91,7 @@ h4 {
 }
 
 /* The actual popup (appears on top) */
+
 .popup .popuptext {
   visibility: hidden;
   width: 160px;
@@ -178,12 +180,4 @@ li {
 
 .list-name-input {
   color: black;
-}
-
-div.word-select {
-  cursor: pointer !important;
-}
-
-div.word-select:active {
-  color: gray;
 }
