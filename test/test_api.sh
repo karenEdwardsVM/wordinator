@@ -11,9 +11,9 @@ ncreated=$(
 )
 echo "Creating list with 3 elements, has: $ncreated"
 
-curl -s 'localhost:8000/wordinator/api/get_word?list_id=2'; echo ""
-curl -s 'localhost:8000/wordinator/api/get_word?update_seen=1&list_id=2'; echo ""
+curl -s "localhost:8000/wordinator/api/get_word?list_id=$list_id"; echo ""
+curl -s "localhost:8000/wordinator/api/get_word?update_seen=1&list_id=$list_id"; echo ""
 
-curl -s 'localhost:8000/wordinator/api/get_words?count=3&list_id=2'; echo ""
+curl -s "localhost:8000/wordinator/api/get_words?count=3&list_id=$list_id"; echo ""
 
 #curl -s 'localhost:8000/wordinator/api/get_user_lists?email=awlkdnawd@gmail.com'; echo ""

@@ -1,29 +1,3 @@
-#@auth.requires_signature()
-#def add_post():
-#    post_id = db.post.insert(
-#        post_title=request.vars.post_title,
-#        post_content=request.vars.post_content,
-#    )
-#    # We return the id of the new post, so we can insert it along all the others.
-#    return response.json(dict(post_id=post_id))
-#
-#@auth.requires_signature()
-#def edit_post():
-#    post_id = int(request.vars.post_id)
-#    content = request.vars.content or ""
-#    db(db.post.id == post_id).update(
-#        post_content = content
-#    )
-#    return "ok"
-#
-#def get_reply_list(post_id):
-#    if request.vars.post_id:
-#        post_id = int(request.vars.post_id)
-#
-#    return db(db.reply.post_id == post_id).select(db.reply.ALL, orderby=~db.reply.post_time)
-
-#@auth.requires_signature()
-
 import time
 import json
 
@@ -88,7 +62,10 @@ def get_words():
 
 #@auth.requires_signature()
 def get_user_lists():
-    user_email = request.vars.email
+    user_email = request.vars.email or get_user_email()
+
+    if not user_email:
+        return json.dumps([])
 
     lists = db(db.user_lists.user_email == user_email and db.lists.id == db.user_lists.list_id).select(
         db.lists.name,

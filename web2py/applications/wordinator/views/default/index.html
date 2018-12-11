@@ -2,36 +2,41 @@
 
 {{block head}}
 {{end}}
-<!-- <script src="{{=URL('static', 'js/vue.js')}}"></script> -->
+
 <head>
 <script>
+const redirect_list = (list_id) => {
+  window.location.href = `/wordinator/default/quiz?list_id=${list_id}`;
+};
 
-        const submit_answer = (n) => {
-        console.log("Submitting answer");
-        window.location.href = `/wordinator/default/quiz?list_id=${n}`;
-    };
-
+$(document).ready(() => {
+    $.get("/wordinator/api/get_user_lists", {}, (result) => {
+        $("#list-box").html("");
+        result = JSON.parse(result);
+        result.forEach(list => {
+              let element = (`
+                  <li>
+                      <div class="word-select" onclick="redirect_list(${list.list_id});">
+                          ${list.name}
+                      </div>
+                  </li>
+              `);
+              $("#list-box").append(element);
+        });
+    });
+});
 </script>
 </head>
+
 <body>
     <div class="main_content">
-        <div class="quiz-container">
-            <div class="instructions">
-                Choose the list you want to be quizzed on.
-            </div>
-            <div class="quiz-box">
-                <form>
-                    <h4 id="quiz_word">Lists:</h4>
-                    <ul class="flex-outer" id="word-box">
-                        <!-- pull definitions -->
-                    <li>
-                        <button onclick="submit_answer(4);">Button</button>
-                    </li>
-                    </ul>
-                </form>
-            </div>
+        <div class="instructions">
+            Choose the list you want to be quizzed on.
+        </div>
+        <div class="list-selector">
+            <h4 id="quiz_word">Lists:</h4>
+            <ul class="flex-outer" id="list-box">
+            </ul>
         </div>
     </div>
 </body>
-  <!-- ################## Reload the page on comment add ###########################3 -->
-<!-- <script src="{{=URL('static', 'js/default_index.js')}}"></script> -->
