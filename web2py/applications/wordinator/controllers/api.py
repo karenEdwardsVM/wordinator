@@ -237,7 +237,7 @@ WHERE to_email = '{email}'
     if int(request.vars.unread_only) == 1:
         query += " AND has_been_read = 0"
 
-    query += ";"
+    query += " ORDER BY sent_at DESC;"
 
     messages = db.executesql(query)
     out = []
