@@ -105,4 +105,32 @@ def get_user_lists():
 
     return json.dumps(out)
 
+#@auth.requires_signature()
+def score_word():
+    print("SW called with", request.vars)
+
+    if (not request.vars.word_id) or (not request.vars.correct):
+        return False
+
+    word_id = int(request.vars.word_id)
+    correct = int(request.vars.correct)
+
+    word = db(db.words.id == word_id).select(db.words.ALL)
+
+    if len(word) == 0:
+        return "{\"error\": \"Couldn't find word: " + str(word_id) + "\"}"
+
+    word = word[0].as_dict()
+
+    if correct == 1:
+        db(db.words.id == word_id).update(
+            correct = int(word["correct"]) + 1
+        )
+    else:
+        db(db.words.id == word_id).update(
+            incorrect = int(word["incorrect"]) + 1
+        )
+
+    return "ok"
+
 #def get_high_scores():

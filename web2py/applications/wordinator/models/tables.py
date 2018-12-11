@@ -35,9 +35,10 @@ db.define_table(
     Field('list_id'),
     Field('word', 'text'),
     Field('definition', 'text'),
-    Field('seen'),
-    Field('correct'),
-    Field('ts'),
+    Field('seen', default=0),
+    Field('correct', default=0),
+    Field('incorrect', default=0),
+    Field('ts', default=0),
 )
 
 db.define_table(
