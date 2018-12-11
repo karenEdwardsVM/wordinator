@@ -245,3 +245,38 @@ ul#score-list.flex-outer {
     justify-content: space-between;
     flex-direction: column;
 }
+
+input.chat-recip {
+    font-size: 12px !important;
+    color: white !important;
+}
+
+ul.chat-page {
+    margin: 10px;
+}
+
+ul#send-box {
+    width: 60vw;
+    height: 30vh;
+}
+
+li.message-element {
+    background-color: #2C3539;
+    border-radius: 2px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+div.message-info {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+}
+
+input.reply-button {
+    background-color: #CA226B !important;
+    width: 65px;
+    height: 35px;
+}

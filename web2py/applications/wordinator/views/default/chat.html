@@ -1,0 +1,56 @@
+{{extend 'layout.html'}}
+
+{{block head}}
+{{end}}
+<script src="{{=URL('static', 'js/vue.js')}}"></script>
+<script src="{{=URL('static', 'js/helpers.js')}}"></script>
+<script src="{{=URL('static', 'js/message_loop.js')}}"></script>
+<head>
+    <script>
+
+        get_all_messages("mine").then(messages => {
+            $("#messages-received").html("");
+            messages.forEach(m => {
+                console.log("m is ", m);
+                const element =
+                    `<li class="message-element">
+                        <div class="message-info">
+                            <span>${m.from} at ${m.sent_at}</span>
+                            <input type="button" class="reply-button" value="Reply"/>
+                        </div>
+                        <div>
+                            ${m.content}
+                        </div>
+                    </li>`;
+                $("#messages-received").append(element);
+            });
+
+        });
+    </script>
+</head>
+<body>
+    <div class="main_content">
+        <div class="quiz-container">
+            <div class="quiz-box">
+                <ul class="flex-outer chat-page" id="send-box">
+                    <!-- pull definitions -->
+                    <li>
+                        <label for="content">To:</label>
+                        <input id="chat-recip" class="chat-recip" type="text" placeholder="Enter recipient">
+                    </li>
+                    <li>
+                        <label for="content"></label>
+                        <textarea name="content" class="chat-message" id="content" placeholder="Enter message here"></textarea>
+                    </li>
+                    <li>
+                        <input id="send" type="button" value="Send"></input>
+                    </li>
+                </ul>
+                <ul class="flex-outer chat-page" id="messages-received">
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+  <!-- ################## Reload the page on comment add ###########################3 -->
+<script src="{{=URL('static', 'js/default_index.js')}}"></script>

@@ -19,7 +19,7 @@ const get_unread_messages = user_email => {
     }).then(str => JSON.parse(str));
 };
 
-const get_all_messages = () => {
+const get_all_messages = user_email => {
     return call_api("/wordinator/api/get_messages", {
         user_email,
         unread_only: 0

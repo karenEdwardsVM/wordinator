@@ -65,3 +65,6 @@ def list():
 
 def quiz():
     return dict()
+
+def chat():
+    return dict()
