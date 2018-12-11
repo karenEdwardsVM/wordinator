@@ -39,14 +39,14 @@
             // for toggling quiz between english and other language
             var element = $("#toggle_button");
 
-            if (element.val() === "English") {
+            if (element.val() === "Word") {
                 first_word = result[0].definition;
             } else if (element.val() === "Definition") {
                 first_word = result[0].word;
             }
             word_data = result[0];
 
-            if (element.val() === "English") {
+            if (element.val() === "Word") {
                 $("#quiz_word").html(result[0].word);
 
                 for(let i = 0; i < result.length; i++) {
@@ -120,11 +120,11 @@
     {
         var element = $("#toggle_button");
         console.log(element.val());
-        if (element.val() === "English") {
+        if (element.val() === "Word") {
             element.val("Definition");
         }
         else {
-            element.val("English");
+            element.val("Word");
         }
         run_get_words();
     }
@@ -165,7 +165,7 @@
                 Choose the correct translation for the word.
                 <div class="toggling">
                     <input type="button" id="toggle_button" class="toggle_button"
-                        value="English" onclick="toggle_quiz();"></input>
+                        value="Word" onclick="toggle_quiz();"></input>
                 </div>
             </div>
             <!--Creates the popup body-->
