@@ -60,6 +60,12 @@
         run_get_words();
     });
 
+    // When the user clicks on <div>, open the popup
+    function pop_up() {
+        var popup = document.getElementById("myPopup");
+        popup.classList.toggle("show");
+    }
+
     const submit_answer = (n) => {
         console.log("Word is: ", first_word);
         console.log("Answer is: ", word_array[n]);
@@ -89,6 +95,10 @@
                     <ul class="flex-outer" id="word-box">
                     </ul>
                 </form>
+            </div>
+                <!--Creates the popup body-->
+            <div class="popup" onclick="pop_up();">Click me!
+                <span class="popuptext" id="myPopup">Popup text...</span>
             </div>
         </div>
     </div>
