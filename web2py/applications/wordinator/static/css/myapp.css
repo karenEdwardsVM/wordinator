@@ -37,8 +37,9 @@ a:first-child {
     margin-right: 5px;
 }
 
-/*Styling for the quiz-box*/
-div.quiz-container {
+
+/*Styling for the quiz-box and list-box*/
+div.quiz-container, div.list-container {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -52,7 +53,7 @@ div.instructions {
     padding-bottom: 50px;
 }
 
-div.quiz-box {
+div.quiz-box, div.list-selector {
     display: flex;
     justify-content: center;
     border-radius: 2px;
@@ -71,7 +72,7 @@ ul.flex-outer {
     width: 100%;
 }
 
-form {
+form,div.list-of-lists {
     background-color: #2C3539;
     border-radius: 5px;
 }
