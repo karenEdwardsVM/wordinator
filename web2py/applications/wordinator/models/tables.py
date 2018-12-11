@@ -51,11 +51,3 @@ db.define_table(
     Field('user_email', 'text'),
     Field('list_id')
 )
-
-db.define_table(
-    'scores',
-    Field('list_id'),
-    Field('user_email'),
-    Field('time_taken'),
-    Field('amount_correct'),
-)
